@@ -1,0 +1,686 @@
+/*******************************************
+ * 
+ * Reset Styles
+ *  
+ ******************************************/
+html, body, h1, h2, h3, h4, h5, h6, article, aside, details, del, ins, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, blockquote, q, th, td, caption, table, div, span, object, iframe, p, pre, a, abbr, acronym, address, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption, tbody, tfoot, thead, tr, img, input {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent; }
+
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  font-family: Arial, Helvetica, sans-serif; }
+
+html, body {
+  height: 100%; }
+
+table {
+  border-collapse: collapse; }
+
+a {
+  text-decoration: none; }
+
+img {
+  max-width: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+  font-size: 10px; }
+
+ul, ol {
+  list-style: none; }
+
+/*----------------------------------------------
+ * Buttons Styles
+ *----------------------------------------------*/
+/*----------------------------------------------
+ * FORM Styles
+ *----------------------------------------------*/
+form {
+  font-size: 13px; }
+  form .row {
+    padding: 5px 0 0;
+    position: relative; }
+    form .row.error .text {
+      border-color: #d40f0f; }
+      form .row.error .text:focus {
+        border-color: #aaa; }
+    form .row.error p.error {
+      display: block; }
+    form .row.cell {
+      display: inline-block;
+      width: auto;
+      padding-right: 30px; }
+    form .row.small label {
+      width: 150px; }
+    form .row.small .text, form .row.small p.tip, form .row.small p.error {
+      width: 90px; }
+    form .row.small .selectWrapper {
+      width: 150px; }
+      form .row.small .selectWrapper select {
+        width: 175px; }
+    form .row.smaller label {
+      width: 100px; }
+    form .row.smaller .text, form .row.smaller p.tip, form .row.smaller p.error {
+      width: 90px; }
+    form .row.smaller .selectWrapper {
+      width: 100px; }
+      form .row.smaller .selectWrapper select {
+        width: 125px; }
+    form .row.medium label {
+      width: 255px; }
+    form .row.medium .text, form .row.medium p.tip, form .row.medium p.error {
+      width: 245px; }
+    form .row.medium .selectWrapper {
+      width: 200px; }
+    form .row.avrg label {
+      width: 300px; }
+    form .row.avrg .text, form .row.avrg p.tip, form .row.avrg p.error {
+      width: 300px; }
+    form .row.inline label, form .row.inline width {
+      display: inline-block;
+      width: auto; }
+    form .row.inline label {
+      padding-left: 5px; }
+    form .row.buttons {
+      text-align: right; }
+  form label {
+    color: #666;
+    display: block;
+    width: 410px;
+    line-height: 25px; }
+    form label span.required {
+      color: #ff4646;
+      font-size: 11px;
+      font-weight: normal; }
+  form .text {
+    border: 1px solid #ddd;
+    color: #555;
+    width: 400px;
+    padding: 7px 5px; }
+    form .text:focus {
+      border-color: #aaa; }
+      form .text:focus ~ p.tip {
+        display: block; }
+      form .text:focus ~ p.error {
+        display: none; }
+  form .selectWrapper {
+    border: 1px solid #ddd;
+    width: 410px;
+    overflow: hidden;
+    position: relative; }
+    form .selectWrapper select, form .selectWrapper option {
+      border: 0 none;
+      color: #555; }
+    form .selectWrapper select {
+      background: transparent;
+      color: none;
+      width: 440px;
+      height: 32px; }
+    form .selectWrapper option {
+      padding: 5px; }
+    form .selectWrapper span.downArrow {
+      background: url("../imgs/global/sprite.png") no-repeat -158px -272px;
+      display: block;
+      width: 18px;
+      height: 18px;
+      position: absolute;
+      top: 9px;
+      right: 5px;
+      z-index: -1; }
+  form p.tip, form p.error {
+    font-size: 12px;
+    line-height: 18px;
+    width: 400px; }
+  form p.tip {
+    background: none;
+    color: #b1b1b1;
+    padding: 0 0 5px; }
+  form p.error {
+    display: none;
+    background: #e44a4a;
+    border: 1px solid #b63131;
+    border-top: 0 none;
+    padding: 0 5px;
+    color: #fff; }
+  form > p.error {
+    display: none;
+    background: transparent;
+    border: 0 none;
+    color: #b50c0c;
+    font-weight: bold;
+    width: auto;
+    padding: 0; }
+
+/*----------------------------------------------
+ * Test Styles
+ *----------------------------------------------*/
+.test_class {
+  width: 3000px; }
+
+/*----------------------------------------------
+ * General Styles
+ *----------------------------------------------*/
+.cntrd_inner {
+  width: 980px;
+  margin: 0 auto;
+  overflow: auto; }
+
+.clear {
+  clear: both;
+  float: none;
+  line-height: 1px;
+  border: 0 none;
+  padding: 0;
+  margin: 0; }
+
+.nojs, .ltie9 {
+  font-size: 1em;
+  font-weight: bold;
+  background: #FFFDB2;
+  border: 1px solid #C1BC24;
+  color: #635030;
+  padding: 10px;
+  text-align: center; }
+
+.cellSpace {
+  display: table-cell; }
+  .cellSpace:before {
+    content: "\00a0 \00a0"; }
+
+/*----------------------------------------------
+ * Custom Form Elements Styles
+ *----------------------------------------------*/
+.frmEleWrap {
+  background: #fff;
+  border: 1px solid #ddd;
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: middle;
+  position: relative; }
+  .frmEleWrap .fe {
+    background: transparent;
+    border: 0 none;
+    color: #555;
+    outline: 0;
+    padding: 3px 15px 3px 5px;
+    font-size: 12px; }
+    .frmEleWrap .fe.spinner {
+      width: 35px;
+      text-align: center; }
+    .frmEleWrap .fe.dDown {
+      width: 155px;
+      padding-top: 1px;
+      margin: 0 -17px 0 0; }
+  .frmEleWrap .feBtns {
+    background: #fff;
+    display: inline-block;
+    width: 15px;
+    position: absolute;
+    top: 0;
+    right: 0; }
+    .frmEleWrap .feBtns .feBtn {
+      background: url("../imgs/sprite.png") no-repeat 0px 0px;
+      display: block;
+      height: 10px;
+      cursor: pointer; }
+      .frmEleWrap .feBtns .feBtn.spinArrowUp {
+        background-position: -37px -189px; }
+      .frmEleWrap .feBtns .feBtn.spinArrowDown {
+        background-position: -7px -190px; }
+      .frmEleWrap .feBtns .feBtn.selectArrowDown {
+        background-position: -128px -184px;
+        height: 20px; }
+
+/*----------------------------------------------
+ * Icons Styles
+ *----------------------------------------------*/
+.iconsGroup {
+  display: table;
+  border-collapse: collapse;
+  width: 1%;
+  margin: 10px auto; }
+
+.iconWrap {
+  display: block;
+  position: relative; }
+
+.hidnInput {
+  display: none; }
+  .hidnInput:checked + label .iconWrap {
+    background: #61818E; }
+  .hidnInput:checked + label .icon {
+    opacity: 1; }
+  .hidnInput:disabled + label {
+    cursor: default; }
+    .hidnInput:disabled + label .icon {
+      opacity: 0.25; }
+    .hidnInput:disabled + label:active .iconWrap {
+      box-shadow: none; }
+
+.lblIcon {
+  border: 1px solid #333;
+  display: table-cell;
+  cursor: pointer;
+  height: 30px;
+  font-size: 13px;
+  line-height: 30px;
+  text-indent: 30px; }
+  .lblIcon:active .iconWrap {
+    box-shadow: 0px 0px 10px #777 inset; }
+
+.icon {
+  background: url("../imgs/sprite.png") no-repeat 0px 0px;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  left: 8px;
+  top: 5px;
+  opacity: 0.65; }
+  .icon:hover {
+    opacity: 1; }
+  .icon.menu {
+    background-position: -95px -65px; }
+  .icon.symbols {
+    background-position: -35px -5px; }
+  .icon.clrSelector {
+    background-position: -125px -155px; }
+  .icon.fontTools {
+    background-position: -155px -155px; }
+  .icon.shapeSettings {
+    background-position: -185px -155px; }
+  .icon.shpColor {
+    background-position: -125px -5px; }
+  .icon.brdColor {
+    background-position: -95px -5px; }
+  .icon.txtColor {
+    background-position: -215px -155px; }
+  .icon.txtBold {
+    background-position: -35px -35px; }
+  .icon.txtItalic {
+    background-position: -65px -35px; }
+  .icon.txtUndLine {
+    background-position: -95px -35px; }
+  .icon.txtLeft {
+    background-position: -185px -5px; }
+  .icon.txtRight {
+    background-position: -215px -5px; }
+  .icon.txtCenter {
+    background-position: -5px -35px; }
+  .icon.fileTools {
+    background-position: -97px -215px; }
+  .icon.new {
+    background-position: -126px -215px; }
+  .icon.open {
+    background-position: -5px -245px; }
+  .icon.save {
+    background-position: -156px -215px; }
+  .icon.close {
+    background-position: -186px -216px; }
+  .icon.code {
+    background-position: -216px -185px; }
+  .icon.print {
+    background-position: -216px -215px; }
+  .icon.editTools {
+    background-position: -184px -185px; }
+  .icon.copy {
+    background-position: -6px -65px; }
+  .icon.paste {
+    background-position: -35px -66px; }
+  .icon.cut {
+    background-position: -216px -36px; }
+  .icon.delete {
+    background-position: -66px -65px; }
+  .icon.undo {
+    background-position: -126px -66px; }
+  .icon.redo {
+    background-position: -157px -65px; }
+  .icon.front {
+    background-position: -186px -65px; }
+  .icon.back {
+    background-position: -215px -64px; }
+  .icon.forward {
+    background-position: -6px -95px; }
+  .icon.backward {
+    background-position: -35px -96px; }
+  .icon.group {
+    background-position: -65px -155px; }
+  .icon.upgroup {
+    background-position: -95px -155px; }
+  .icon.expanded {
+    background-position: -95px -245px; }
+  .icon.collapsed {
+    background-position: -65px -245px; }
+  .icon.zoomin {
+    background-position: -155px -35px; }
+  .icon.zoomout {
+    background-position: -185px -35px; }
+  .icon.collapsLeft {
+    background-position: -125px -244px; }
+  .icon.expandLeft {
+    background-position: -155px -244px; }
+  .icon.minimize {
+    background-position: -185px -242px; }
+  .icon.restore {
+    background-position: -215px -245px; }
+  .icon.resize_se {
+    background-position: -3px -273px; }
+  .icon.close_dark {
+    background-position: -35px -275px; }
+  .icon.shapeTools {
+    background-position: -35px -245px; }
+  .icon.select {
+    background-position: -65px -5px; }
+  .icon.draw {
+    background-position: -36px -5px; }
+  .icon.connector {
+    background-position: -6px -6px; }
+
+/*----------------------------------------------
+ * Modal PopUps Styles
+ *----------------------------------------------*/
+/*----------------------------------------------
+ * Page Styles
+ *----------------------------------------------*/
+body {
+  background: #000;
+  color: #fff; }
+
+/*----------------------------------------------
+ * Heading Styles
+ *----------------------------------------------*/
+#headerWrapper {
+  border-bottom: 1px solid #222; }
+
+/*----------------------------------------------
+ * Middle Wrapper Styles
+ *----------------------------------------------*/
+/*----------------------------------------------
+ * Sidebar Tools Styles
+ *----------------------------------------------*/
+#toolsWrapper {
+  width: 250px;
+  float: left; }
+  #toolsWrapper > h1, #toolsWrapper h2 {
+    font-weight: normal;
+    position: relative; }
+    #toolsWrapper > h1 .text, #toolsWrapper h2 .text {
+      display: block;
+      position: absolute;
+      left: 35px;
+      white-space: nowrap;
+      font-size: 15px;
+      line-height: 30px; }
+  #toolsWrapper > h1 {
+    background: #111;
+    border-bottom: 1px solid #555;
+    font-size: 20px;
+    height: 35px; }
+    #toolsWrapper > h1 .icon.collapsLeft,
+    #toolsWrapper > h1 .icon.expandLeft {
+      left: auto;
+      right: 7px;
+      cursor: pointer; }
+
+/*----------------------------------------------
+ * Tools Sections Styles
+ *----------------------------------------------*/
+section.toolBox > h2 {
+  background: #222;
+  border-bottom: 1px solid #444;
+  height: 30px;
+  cursor: pointer; }
+  section.toolBox > h2 .icon {
+    left: 7px; }
+    section.toolBox > h2 .icon.accord {
+      background-position: -95px -245px;
+      left: auto;
+      right: 7px; }
+section.toolBox.collapsed > h2 .icon.accord {
+  background-position: -65px -245px; }
+section.toolBox ul {
+  overflow: hidden; }
+section.toolBox li {
+  float: left; }
+section.toolBox a {
+  font-size: 0;
+  display: block;
+  width: 24px;
+  height: 24px;
+  vertical-align: top;
+  border: "0" solid "#000";
+  -moz-border-radius: "2px";
+  -webkit-border-radius: "2px";
+  -khtml-border-radius: "2px";
+  -o-border-radius: "2px";
+  -ms-border-radius: "2px";
+  border-radius: "2px"; }
+  section.toolBox a.selected, section.toolBox a:hover {
+    background-color: #959; }
+
+.toolContent {
+  display: none;
+  border-bottom: 1px solid #555; }
+  .toolContent.symbols {
+    padding: 5px 5px 0 0; }
+    .toolContent.symbols label.lblIcon {
+      border: 0 none;
+      display: inline-block;
+      width: 40px;
+      height: 40px;
+      margin: 0 0 5px 5px; }
+      .toolContent.symbols label.lblIcon .iconWrap {
+        height: 100%; }
+      .toolContent.symbols label.lblIcon .icon {
+        background-image: url("../imgs/flowchart_symbols1.svg");
+        background-repeat: no-repeat;
+        background-position: 0 0;
+        display: inline-block;
+        width: 40px;
+        height: 40px;
+        top: 0px;
+        left: 0px; }
+        .toolContent.symbols label.lblIcon .icon.process {
+          background-position: -5.6px 2px; }
+        .toolContent.symbols label.lblIcon .icon.terminator {
+          background-position: -5.6px -45px; }
+        .toolContent.symbols label.lblIcon .icon.decision {
+          background-position: -5.6px -96px; }
+        .toolContent.symbols label.lblIcon .icon.delay {
+          background-position: -5.6px -147px; }
+        .toolContent.symbols label.lblIcon .icon.predefinedProcess {
+          background-position: -5.6px -194px; }
+        .toolContent.symbols label.lblIcon .icon.alternateProcess {
+          background-position: -5.6px -242px; }
+        .toolContent.symbols label.lblIcon .icon.dataIO {
+          background-position: -5.6px -287px; }
+        .toolContent.symbols label.lblIcon .icon.document {
+          background-position: -2.6px -340px; }
+        .toolContent.symbols label.lblIcon .icon.multiDocument {
+          background-position: -2.6px -394px; }
+        .toolContent.symbols label.lblIcon .icon.preparation {
+          background-position: -5.6px -435px; }
+        .toolContent.symbols label.lblIcon .icon.display {
+          background-position: -5.6px -482px; }
+        .toolContent.symbols label.lblIcon .icon.manualInput {
+          background-position: -5.6px -530px; }
+        .toolContent.symbols label.lblIcon .icon.manualOperation {
+          background-position: -4.6px -577px; }
+        .toolContent.symbols label.lblIcon .icon.card {
+          background-position: -5.6px -618px; }
+        .toolContent.symbols label.lblIcon .icon.punchedTape {
+          background-position: -5.6px -664px; }
+        .toolContent.symbols label.lblIcon .icon.connector {
+          background-position: -6.5px -714px; }
+        .toolContent.symbols label.lblIcon .icon.offPageConnector {
+          background-position: -5.6px -765px; }
+        .toolContent.symbols label.lblIcon .icon.transfer {
+          background-position: -5.6px -814px; }
+        .toolContent.symbols label.lblIcon .icon.or {
+          background-position: -5.6px -863px; }
+        .toolContent.symbols label.lblIcon .icon.summingJunction {
+          background-position: -5.6px -918px; }
+        .toolContent.symbols label.lblIcon .icon.collate {
+          background-position: -5.6px -969px; }
+        .toolContent.symbols label.lblIcon .icon.sort {
+          background-position: -5.6px -1015px; }
+        .toolContent.symbols label.lblIcon .icon.mergeStorage {
+          background-position: -5.6px -1059px; }
+        .toolContent.symbols label.lblIcon .icon.extract {
+          background-position: -5.6px -1107px; }
+        .toolContent.symbols label.lblIcon .icon.storedData {
+          background-position: -5.6px -1151px; }
+        .toolContent.symbols label.lblIcon .icon.magneticDisk {
+          background-position: -5.7px -1199px; }
+        .toolContent.symbols label.lblIcon .icon.directAccessStorage {
+          background-position: -5.6px -1247px; }
+        .toolContent.symbols label.lblIcon .icon.internalStorage {
+          background-position: -5.6px -1292px; }
+        .toolContent.symbols label.lblIcon .icon.magneticTape {
+          background-position: -5.6px -1339px; }
+        .toolContent.symbols label.lblIcon .icon.callout {
+          background-position: -5.6px -1389px; }
+  .toolContent.clrSelector label.lblIcon .iconWrap {
+    padding-right: 5px; }
+  .toolContent.clrSelector label.lblIcon .selectedColor {
+    background: #28c328;
+    display: block;
+    clear: both;
+    font-size: 10px;
+    line-height: 10px; }
+  .toolContent.fontTools {
+    padding-top: 10px; }
+    .toolContent.fontTools .fontName {
+      float: left;
+      margin-left: 14px; }
+    .toolContent.fontTools .fontSize {
+      float: right;
+      margin-right: 23px; }
+    .toolContent.fontTools .iconsGroup {
+      padding-right: 10px; }
+  .toolContent.shapeSettings fieldset {
+    padding: 10px 30px 10px 20px; }
+  .toolContent.shapeSettings .frmEleWrap.border {
+    float: left; }
+  .toolContent.shapeSettings .frmEleWrap.corners {
+    float: right; }
+
+/*----------------------------------------------
+ * Color Picker Styles
+ *----------------------------------------------*/
+#colorPicker {
+  width: 195px;
+  margin: 0 auto 15px; }
+
+/*----------------------------------------------
+ * Canvas Wrapper Styles
+ *----------------------------------------------*/
+#container {
+  border-left: 1px solid #444;
+  background: #222;
+  position: relative;
+  margin-left: 250px; }
+
+#statusBar {
+  background: #555;
+  color: #bbb;
+  font-size: 13px;
+  line-height: 22px;
+  position: relative; }
+  #statusBar .icon {
+    cursor: pointer;
+    padding: 0px;
+    left: auto;
+    right: 10px;
+    top: 1px; }
+    #statusBar .icon.zoomout {
+      right: 35px; }
+  #statusBar span {
+    display: inline-block;
+    padding-left: 10px; }
+  #statusBar .value {
+    padding-left: 5px;
+    width: 35px; }
+  #statusBar .divider {
+    color: #777;
+    text-align: center; }
+
+#canvasWrapper {
+  overflow: auto; }
+
+#minFileWrapper {
+  padding: 5px 0 0 5px;
+  overflow: hidden; }
+
+.flwc_wrapper {
+  border: 1px solid #aaa; }
+  #canvasWrapper .flwc_wrapper {
+    height: 350px;
+    width: 800px;
+    min-width: 320px;
+    min-height: 320px; }
+  #minFileWrapper .flwc_wrapper {
+    width: 175px !important;
+    height: 22px !important;
+    margin: 0 5px 5px 0;
+    float: left;
+    overflow: hidden; }
+    #minFileWrapper .flwc_wrapper .title_text {
+      display: inline-block;
+      width: 110px; }
+  .flwc_wrapper .flwc_title {
+    background: #dfdfdf;
+    color: #666;
+    font-weight: normal;
+    font-size: 14px;
+    padding: 3px 0 3px 10px;
+    position: relative;
+    z-index: 1; }
+    .flwc_wrapper .flwc_title .icon {
+      top: 0px;
+      left: auto;
+      right: 1px;
+      cursor: pointer; }
+      .flwc_wrapper .flwc_title .icon.minimize, .flwc_wrapper .flwc_title .icon.restore {
+        right: 20px; }
+  .flwc_wrapper .flwc_container {
+    background: #fff;
+    height: 100%;
+    position: relative; }
+    .flwc_wrapper .flwc_container .resize_se {
+      top: auto;
+      left: auto;
+      right: 1px;
+      bottom: 1px;
+      cursor: se-resize; }
+  .flwc_wrapper .gSelector rect {
+    stroke: #333; }
+  .flwc_wrapper .gSelector .boxSelector {
+    fill: transparent;
+    display: inline;
+    stroke-dasharray: 5,5;
+    cursor: move; }
+  .flwc_wrapper .gSelector [class*=slctGrip-] {
+    fill: #fff; }
+  .flwc_wrapper .gSelector .slctGrip-nw {
+    cursor: nw-resize; }
+  .flwc_wrapper .gSelector .slctGrip-n {
+    cursor: n-resize; }
+  .flwc_wrapper .gSelector .slctGrip-ne {
+    cursor: ne-resize; }
+  .flwc_wrapper .gSelector .slctGrip-e {
+    cursor: e-resize; }
+  .flwc_wrapper .gSelector .slctGrip-se {
+    cursor: se-resize; }
+  .flwc_wrapper .gSelector .slctGrip-s {
+    cursor: s-resize; }
+  .flwc_wrapper .gSelector .slctGrip-sw {
+    cursor: sw-resize; }
+  .flwc_wrapper .gSelector .slctGrip-w {
+    cursor: w-resize; }
+
+/*# sourceMappingURL=main.css.map */
