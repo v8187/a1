@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>HTML5 Based Flowchart Application</title>
+		<meta name="description" content="" />
+		<meta name="author" content="Vikram" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="imgs/app_icon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<link href="css/main.css" type="text/css" rel="stylesheet" />
+		<link href="css/plugins/farbtastic.css" type="text/css" rel="stylesheet" />
+		<link href="css/plugins/vik.modal.css" type="text/css" rel="stylesheet" />
+		<script data-main="js/main" src="js/libs/require-min-2.1.11.js"></script>
+	</head>
+
+	<body>
+		<header id="headerWrapper">
+			<a href="#" title="Flowchart App By Vikram Gupta">
+				<img src="imgs/flowchart_logo.png" width="" alt="Flowchart logo" />
+			</a>
+		</header>
+		<section id="middleWrapper">
+			<section id="toolsWrapper">
+				<h1>
+					<span class="icon menu">&thinsp;</span>
+					<span class="text">Tools</span>
+					<span class="icon collapsLeft">&thinsp;</span>
+				</h1>
+				<section class="toolBox fileTools">
+					<h2>
+						<span class="icon fileTools">&thinsp;</span>
+						<span class="text">File</span>
+						<span class="icon accord">&thinsp;</span>
+					</h2>
+					<div class="toolContent fileTools">
+						<form>
+							<fieldset class="iconsGroup">
+								<input id="ctrlFile_New" class="hidnInput" type="button" />
+								<label for="ctrlFile_New" class="lblIcon" title="New Flowchart">
+									<span class="iconWrap"><span class="icon new">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="ctrlFile_Open" class="hidnInput" type="file" />
+								<label for="ctrlFile_Open" class="lblIcon" title="Open Flowchart">
+									<span class="iconWrap"><span class="icon open">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="ctrlFile_Save" class="hidnInput" type="button" disabled="disabled" />
+								<label for="ctrlFile_Save" class="lblIcon" title="Save Flowchart">
+									<span class="iconWrap"><span class="icon save">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="ctrlFile_Close" class="hidnInput" type="button" disabled="disabled" />
+								<label for="ctrlFile_Close" class="lblIcon" title="Close Flowchart">
+									<span class="iconWrap"><span class="icon close">&thinsp;</span>&thinsp;</span>
+								</label>
+								<span class="cellSpace">&thinsp;</span>
+								<input id="ctrlFile_Code" class="hidnInput" type="button" disabled="disabled" />
+								<label for="ctrlFile_Code" class="lblIcon" title="Show Code">
+									<span class="iconWrap"><span class="icon code">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="ctrlFile_Print" class="hidnInput" type="button" disabled="disabled" />
+								<label for="ctrlFile_Print" class="lblIcon" title="Print Flowchart">
+									<span class="iconWrap"><span class="icon print">&thinsp;</span>&thinsp;</span>
+								</label>
+							</fieldset>
+						</form>
+					</div>
+				</section>
+				<section class="toolBox shapeTools">
+					<h2>
+						<span class="icon shapeTools">&thinsp;</span>
+						<span class="text">Shape Controls</span>
+						<span class="icon accord">&thinsp;</span>
+					</h2>
+					<div class="toolContent shapeTools">
+						<form>
+							<fieldset class="iconsGroup">
+								<input id="toolSelect" name="flowchartTool" class="hidnInput" type="radio" value="select" checked="checked" />
+								<label for="toolSelect" class="lblIcon" title="Select">
+									<span class="iconWrap"><span class="icon select">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="toolDraw" name="flowchartTool" class="hidnInput" type="radio" value="draw" />
+								<label for="toolDraw" class="lblIcon" title="Draw">
+									<span class="iconWrap"><span class="icon draw">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="toolConnector" name="flowchartTool" class="hidnInput" type="radio" value="connector" />
+								<label for="toolConnector" class="lblIcon" title="Connector">
+									<span class="iconWrap"><span class="icon connector">&thinsp;</span>&thinsp;</span>
+								</label>
+							</fieldset>
+						</form>
+					</div>
+				</section>
+				<section class="toolBox editTools">
+					<h2>
+						<span class="icon editTools">&thinsp;</span>
+						<span class="text">Edit</span>
+						<span class="icon accord">&thinsp;</span>
+					</h2>
+					<div class="toolContent editTools">
+						<form>
+							<fieldset class="iconsGroup">
+								<input id="ctrlEdit_Copy" class="hidnInput" type="button" disabled="disabled" />
+								<label for="ctrlEdit_Copy" class="lblIcon" title="Copy">
+									<span class="iconWrap"><span class="icon copy">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="ctrlEdit_Paste" class="hidnInput" type="button" disabled="disabled" />
+								<label for="ctrlEdit_Paste" class="lblIcon" title="Paste">
+									<span class="iconWrap"><span class="icon paste">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="ctrlEdit_Cut" class="hidnInput" type="button" disabled="disabled" />
+								<label for="ctrlEdit_Cut" class="lblIcon" title="Cut">
+									<span class="iconWrap"><span class="icon cut">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="ctrlEdit_Delete" class="hidnInput" type="button" disabled="disabled" />
+								<label for="ctrlEdit_Delete" class="lblIcon" title="Delete">
+									<span class="iconWrap"><span class="icon delete">&thinsp;</span>&thinsp;</span>
+								</label>
+								<span class="cellSpace">&thinsp;</span>
+								<input id="ctrlEdit_Undo" class="hidnInput" type="button" disabled="disabled" />
+								<label for="ctrlEdit_Undo" class="lblIcon" title="Undo">
+									<span class="iconWrap"><span class="icon undo">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="ctrlEdit_Redo" class="hidnInput" type="button" disabled="disabled" />
+								<label for="ctrlEdit_Redo" class="lblIcon" title="Redo">
+									<span class="iconWrap"><span class="icon redo">&thinsp;</span>&thinsp;</span>
+								</label>
+							</fieldset>
+							<fieldset class="iconsGroup">
+								<input id="ctrlEdit_Front" class="hidnInput" type="button" disabled="disabled" />
+								<label for="ctrlEdit_Front" class="lblIcon" title="Bring to Front">
+									<span class="iconWrap"><span class="icon front">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="ctrlEdit_Back" class="hidnInput" type="button" disabled="disabled" />
+								<label for="ctrlEdit_Back" class="lblIcon" title="Send to Back">
+									<span class="iconWrap"><span class="icon back">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="ctrlEdit_Forward" class="hidnInput" type="button" disabled="disabled" />
+								<label for="ctrlEdit_Forward" class="lblIcon" title="Bring Forward">
+									<span class="iconWrap"><span class="icon forward">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="ctrlEdit_Backward" class="hidnInput" type="button" disabled="disabled" />
+								<label for="ctrlEdit_Backward" class="lblIcon" title="Send Backward">
+									<span class="iconWrap"><span class="icon backward">&thinsp;</span>&thinsp;</span>
+								</label>
+								<span class="cellSpace">&thinsp;</span>
+								<input id="ctrlEdit_Group" class="hidnInput" type="button" disabled="disabled" />
+								<label for="ctrlEdit_Group" class="lblIcon" title="Group">
+									<span class="iconWrap"><span class="icon group">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="ctrlEdit_Ungroup" class="hidnInput" type="button" disabled="disabled" />
+								<label for="ctrlEdit_Ungroup" class="lblIcon" title="Ungroup">
+									<span class="iconWrap"><span class="icon upgroup">&thinsp;</span>&thinsp;</span>
+								</label>
+							</fieldset>
+						</form>
+					</div>
+				</section>
+				<section class="toolBox symbols">
+					<h2>
+						<span class="icon symbols">&thinsp;</span>
+						<span class="text">Symbols</span>
+						<span class="icon accord">&thinsp;</span>
+					</h2>
+					<div class="toolContent symbols">
+						<input id="sblProcess" name="ctrlSymbol" value="Process" class="hidnInput" type="radio" checked="checked" />
+						<label for="sblProcess" class="lblIcon" title="Process">
+							<span class="iconWrap"><span class="icon process">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblTerminator" name="ctrlSymbol" value="Terminator" class="hidnInput" type="radio" />
+						<label for="sblTerminator" class="lblIcon" title="Terminator">
+							<span class="iconWrap"><span class="icon terminator">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblDecision" name="ctrlSymbol" value="Decision" class="hidnInput" type="radio" />
+						<label for="sblDecision" class="lblIcon" title="Decision">
+							<span class="iconWrap"><span class="icon decision">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblDelay" name="ctrlSymbol" value="Delay" class="hidnInput" type="radio" />
+						<label for="sblDelay" class="lblIcon" title="Delay">
+							<span class="iconWrap"><span class="icon delay">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblPredefinedProcess" name="ctrlSymbol" value="PredefinedProcess" class="hidnInput" type="radio" />
+						<label for="sblPredefinedProcess" class="lblIcon" title="Predefined Process">
+							<span class="iconWrap"><span class="icon predefinedProcess">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblAalternateProcess" name="ctrlSymbol" value="AlternateProcess" class="hidnInput" type="radio" />
+						<label for="sblAalternateProcess" class="lblIcon" title="Alternate Process">
+							<span class="iconWrap"><span class="icon alternateProcess">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblDataIO" name="ctrlSymbol" value="DataInputOutput" class="hidnInput" type="radio" />
+						<label for="sblDataIO" class="lblIcon" title="Data (Input/Output)">
+							<span class="iconWrap"><span class="icon dataIO">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblDocument" name="ctrlSymbol" value="Document" class="hidnInput" type="radio" />
+						<label for="sblDocument" class="lblIcon" title="Document">
+							<span class="iconWrap"><span class="icon document">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblMultiDocument" name="ctrlSymbol" value="MultiDocument" class="hidnInput" type="radio" />
+						<label for="sblMultiDocument" class="lblIcon" title="Multi-Document">
+							<span class="iconWrap"><span class="icon multiDocument">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblPreparation" name="ctrlSymbol" value="Preparation" class="hidnInput" type="radio" />
+						<label for="sblPreparation" class="lblIcon" title="Preparation">
+							<span class="iconWrap"><span class="icon preparation">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblDisplay" name="ctrlSymbol" value="Display" class="hidnInput" type="radio" />
+						<label for="sblDisplay" class="lblIcon" title="Display">
+							<span class="iconWrap"><span class="icon display">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblManualInput" name="ctrlSymbol" value="ManualInput" class="hidnInput" type="radio" />
+						<label for="sblManualInput" class="lblIcon" title="Manual Input">
+							<span class="iconWrap"><span class="icon manualInput">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblManualOperation" name="ctrlSymbol" value="ManualOperation" class="hidnInput" type="radio" />
+						<label for="sblManualOperation" class="lblIcon" title="Manual Operation">
+							<span class="iconWrap"><span class="icon manualOperation">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblCard" name="ctrlSymbol" value="Card" class="hidnInput" type="radio" />
+						<label for="sblCard" class="lblIcon" title="Card">
+							<span class="iconWrap"><span class="icon card">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblPunchedTape" name="ctrlSymbol" value="PunchedTape" class="hidnInput" type="radio" />
+						<label for="sblPunchedTape" class="lblIcon" title="Punched Tape">
+							<span class="iconWrap"><span class="icon punchedTape">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblConnector" name="ctrlSymbol" value="Connector" class="hidnInput" type="radio" />
+						<label for="sblConnector" class="lblIcon" title="Connector">
+							<span class="iconWrap"><span class="icon connector">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblOffPageConnector" name="ctrlSymbol" value="OffPageConnector" class="hidnInput" type="radio" />
+						<label for="sblOffPageConnector" class="lblIcon" title="Off Page Connector">
+							<span class="iconWrap"><span class="icon offPageConnector">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblTransfer" name="ctrlSymbol" value="Transfer" class="hidnInput" type="radio" />
+						<label for="sblTransfer" class="lblIcon" title="Transfer">
+							<span class="iconWrap"><span class="icon transfer">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblOr" name="ctrlSymbol" value="Or" class="hidnInput" type="radio" />
+						<label for="sblOr" class="lblIcon" title="Or">
+							<span class="iconWrap"><span class="icon or">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblSummingJunction" name="ctrlSymbol" value="SummingJunction" class="hidnInput" type="radio" />
+						<label for="sblSummingJunction" class="lblIcon" title="Summing Junction">
+							<span class="iconWrap"><span class="icon summingJunction">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblCollate" name="ctrlSymbol" value="Collate" class="hidnInput" type="radio" />
+						<label for="sblCollate" class="lblIcon" title="Collate">
+							<span class="iconWrap"><span class="icon collate">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblSort" name="ctrlSymbol" value="Sort" class="hidnInput" type="radio" />
+						<label for="sblSort" class="lblIcon" title="Sort">
+							<span class="iconWrap"><span class="icon sort">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblMergeStorage" name="ctrlSymbol" value="MergeStorage" class="hidnInput" type="radio" />
+						<label for="sblMergeStorage" class="lblIcon" title="Merge (Storage)">
+							<span class="iconWrap"><span class="icon mergeStorage">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblExtract" name="ctrlSymbol" value="Extract" class="hidnInput" type="radio" />
+						<label for="sblExtract" class="lblIcon" title="Extract (Measurement) (Finished Goods)">
+							<span class="iconWrap"><span class="icon extract">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblStoredData" name="ctrlSymbol" value="StoredData" class="hidnInput" type="radio" />
+						<label for="sblStoredData" class="lblIcon" title="Stored Data">
+							<span class="iconWrap"><span class="icon storedData">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblMagneticDisk" name="ctrlSymbol" value="MagneticDisk" class="hidnInput" type="radio" />
+						<label for="sblMagneticDisk" class="lblIcon" title="Magnetic Disk">
+							<span class="iconWrap"><span class="icon magneticDisk">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblDirectAccessStorage" name="ctrlSymbol" value="DirectAccessStorage" class="hidnInput" type="radio" />
+						<label for="sblDirectAccessStorage" class="lblIcon" title="Direct Access Storage">
+							<span class="iconWrap"><span class="icon directAccessStorage">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblInternalStorage" name="ctrlSymbol" value="InternalStorage" class="hidnInput" type="radio" />
+						<label for="sblInternalStorage" class="lblIcon" title="Internal Storage">
+							<span class="iconWrap"><span class="icon internalStorage">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblMagneticTape" name="ctrlSymbol" value="Magnetic Tape" class="hidnInput" type="radio" />
+						<label for="sblMagneticTape" class="lblIcon" title="Sequential Access Storage (Magnetic Tape)">
+							<span class="iconWrap"><span class="icon magneticTape">&thinsp;</span>&thinsp;</span>
+						</label>
+						<input id="sblCallout" name="ctrlSymbol" value="Callout" class="hidnInput" type="radio" />
+						<label for="sblCallout" class="lblIcon" title="Callout">
+							<span class="iconWrap"><span class="icon callout">&thinsp;</span>&thinsp;</span>
+						</label>
+					</div>				 
+				</section>
+				<section class="toolBox clrSelector">
+					<h2>
+						<span class="icon clrSelector">&thinsp;</span>
+						<span class="text">Color Selector</span>
+						<span class="icon accord">&thinsp;</span>
+					</h2>
+					<div class="toolContent clrSelector">
+						<fieldset class="iconsGroup">
+							<input id="ctrlClr_Shape" name="ctrlColor" class="hidnInput" type="radio" checked="checked" />
+							<label for="ctrlClr_Shape" class="lblIcon" title="Shape Color">
+								<span class="iconWrap"><span class="icon shpColor">&thinsp;</span>Shape</span>
+								<span class="selectedColor">&thinsp;</span>
+							</label>
+							<input id="ctrlClr_Border" name="ctrlColor" class="hidnInput" type="radio" />
+							<label for="ctrlClr_Border" class="lblIcon" title="Border Color">
+								<span class="iconWrap"><span class="icon brdColor">&thinsp;</span>Border</span>
+								<span class="selectedColor">&thinsp;</span>
+							</label>
+							<input id="ctrlClr_Text" name="ctrlColor" class="hidnInput" type="radio" />
+							<label for="ctrlClr_Text" class="lblIcon" title="Text Color">
+								<span class="iconWrap"><span class="icon txtColor">&thinsp;</span>Text</span>
+								<span class="selectedColor">&thinsp;</span>
+							</label>
+						</fieldset>
+						<div id="colorPicker">
+						</div>
+					</div>
+				</section>
+				<section class="toolBox fontTools">
+					<h2>
+						<span class="icon fontTools">&thinsp;</span>
+						<span class="text">Font Controls</span>
+						<span class="icon accord">&thinsp;</span>
+					</h2>
+					<div class="toolContent fontTools">
+						<form>
+							<fieldset>
+								<span class="frmEleWrap fontName">
+									<span class="feBtns">
+										<span class="feBtn selectArrowDown">&thinsp;</span>
+									</span>
+									<select id="ctrlFont_Name" value="Arial" class="fe dDown">
+										<option>Font Name</option>
+										<option>Arial</option>
+										<option>Helvetica</option>
+										<option>Comic Sans MS</option>
+										<option>Courier New</option>
+										<option>Georgia</option>
+										<option>Lucida Console</option>
+										<option>Tahoma</option>
+										<option>Times New Roman</option>
+										<option>Trebuchet MS</option>
+										<option>Verdana</option>
+									</select>
+								</span>
+								<span class="frmEleWrap fontSize">
+									<input id="ctrlFont_Size" class="fe spinner" type="text" value="12" title="Text Size" />
+								</span>
+							</fieldset>
+							<fieldset class="iconsGroup">
+								<input id="ctrlTxt_Bold" name="ctrlText" class="hidnInput" type="checkbox" />
+								<label for="ctrlTxt_Bold" class="lblIcon" title="Bold">
+									<span class="iconWrap"><span class="icon txtBold">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="ctrlTxt_Italic" name="ctrlText" class="hidnInput" type="checkbox" />
+								<label for="ctrlTxt_Italic" class="lblIcon" title="Italic">
+									<span class="iconWrap"><span class="icon txtItalic">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="ctrlTxt_UndLine" name="ctrlText" class="hidnInput" type="checkbox" />
+								<label for="ctrlTxt_UndLine" class="lblIcon" title="underline">
+									<span class="iconWrap"><span class="icon txtUndLine">&thinsp;</span>&thinsp;</span>
+								</label>
+								<span class="cellSpace">&thinsp;</span>
+								<input id="ctrlTxt_Left" name="ctrlTextAlign" value="left" class="hidnInput" type="radio" checked="checked" />
+								<label for="ctrlTxt_Left" class="lblIcon" title="Left Align">
+									<span class="iconWrap"><span class="icon txtLeft">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="ctrlTxt_Center" name="ctrlTextAlign" value="center" class="hidnInput" type="radio" />
+								<label for="ctrlTxt_Center" class="lblIcon" title="Center Align">
+									<span class="iconWrap"><span class="icon txtCenter">&thinsp;</span>&thinsp;</span>
+								</label>
+								<input id="ctrlTxt_Right" name="ctrlTextAlign" value="right" class="hidnInput" type="radio" />
+								<label for="ctrlTxt_Right" class="lblIcon" title="Right Align">
+									<span class="iconWrap"><span class="icon txtRight">&thinsp;</span>&thinsp;</span>
+								</label>
+							</fieldset>
+						</form>
+					</div>
+				</section>
+				<section class="toolBox shapeSettings">
+					<h2>
+						<span class="icon shapeSettings">&thinsp;</span>
+						<span class="text">Shape Settings</span>
+						<span class="icon accord">&thinsp;</span>
+					</h2>
+					<div class="toolContent shapeSettings">
+						<form>
+							<fieldset>
+								<span class="frmEleWrap border">
+									<input id="stngShp_Border" class="fe spinner" type="text" value="1" title="Border Size" />
+								</span>
+								<span class="frmEleWrap corners">
+									<input id="stngShp_Corner" class="fe spinner" type="text" value="1" title="Roundedness" />
+								</span>
+							</fieldset>
+						</form>
+					</div>
+				</section>
+			</section>
+			<section id="container">
+				<div id="canvasWrapper"></div>
+				<div id="minFileWrapper"></div>
+				<div id="statusBar">
+					<span class="label">x:</span><span class="value" id="val_X">88888</span>
+					<span class="label">y:</span><span class="value" id="val_Y"></span>
+					<span class="divider">|</span>
+					<span class="label">width:</span><span class="value" id="val_width"></span>
+					<span class="label">height:</span><span class="value" id="val_height"></span>
+					<span class="icon zoomin">&thinsp;</span>
+					<span class="icon zoomout">&thinsp;</span>
+				</div>
+			</section>
+		</section>
+	</body>
+</html>
