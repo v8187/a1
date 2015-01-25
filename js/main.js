@@ -1,0 +1,51 @@
+require.config({
+  waitSeconds: 0,
+  paths: {
+  	global							: 'global',
+  	jquery    					: 'libs/jquery-1.11.0.min',
+    json2     					: 'plugins/json2',
+    jstorage  					: 'plugins/jstorage',
+  	farbtastic					: 'plugins/farbtastic',
+  	accordion 					: 'plugins/vik.accordion',
+  	spinner   					: 'plugins/vik.spinner',
+  	modal     					: 'plugins/vik.modal',
+  	resize    					: 'plugins/vik.resizer',
+  	memory 							: 'memory',
+  	toolConfig					: 'tools_config',
+  	templates 					: '../templates',
+  	
+  	Flowchart						: 'modules/flowchart',
+  	Shape								: 'modules/shape',
+  	Process  						: 'modules/process',
+  	Terminator					: 'modules/terminator',
+  	Decision						: 'modules/decision',
+  	Delay								: 'modules/delay',
+  	PredefinedProcess  	: 'modules/predefined_process',
+  	AlternateProcess  	: 'modules/alternate_process',
+  	DataInputOutput			: 'modules/data_input_output',
+  	Preparation					: 'modules/preparation',
+  	Display							: 'modules/display',
+  	ManualInput					: 'modules/manual_input',
+  	ManualOperation			: 'modules/manual_operation',
+  	Card								: 'modules/card',
+  	OffPageConnector		: 'modules/off_page_connector',
+  	Transfer						: 'modules/transfer',
+  	Collate							: 'modules/collate',
+  	Sort								: 'modules/sort',
+  	MergeStorage				: 'modules/merge_storage',
+  	Extract							: 'modules/extract',
+  	InternalStorage			: 'modules/internal_storage'
+  },
+  shim : {
+    Flowchart : ['resize'],
+    modal     : ['jquery', 'helpers'],
+    memory    : ['jquery', 'jstorage'],
+    toolConfig: ['jquery', 'handlers', 'Flowchart', 'Shape', 
+    						 'Process','Terminator', 'Decision', 'Delay', 
+    						 'PredefinedProcess', 'AlternateProcess', 'DataInputOutput',
+    						 'Preparation', 'Display', 'ManualInput', 'ManualOperation', 'Card',
+    						 'OffPageConnector', 'Transfer', 'Collate', 'Sort', 'MergeStorage', 'Extract',
+    						 'InternalStorage']
+  }
+});
+require(['init'], function(init) {});
