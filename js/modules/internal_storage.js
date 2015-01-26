@@ -7,9 +7,9 @@ function(require, $, helpers, handlers, modal, Shape) {
 	};
 	
 	InternalStorage.inherits(Shape);
-	InternalStorage.prototype.template = 'M{#} {#} {#} {#} {#} {#} {#} {#} {#} {#}zM{#} {#}v{#}zM{#} {#}v{#}z';
+	InternalStorage.prototype.template = 'M{#} {#} {#} {#} {#} {#} {#} {#} {#} {#}zM{#} {#}v{#}zM{#} {#}h{#}z';
 	InternalStorage.prototype.setD = function() {
-		var _axis = this.axis, _width = formatNumber(this.width*0.2), _height = this.height,
+		var _axis = this.axis, _width = this.width, _height = this.height,
 				_x1 = _axis[0][0], _x2 = _axis[1][0],
 				_y1 = _axis[0][1], _y2 = _axis[1][1];
 		
@@ -17,8 +17,8 @@ function(require, $, helpers, handlers, modal, Shape) {
 					
 		var border = this.attr['stroke-width'];
 		values.push(border > 0 ? _y1 - border / 2 : _y1);
-		values.push(_x1 + _width, _y1, _height,
-							_x2 - _width, _y1, _height);
+		values.push(formatNumber(_x1 + this.width*0.2), _y1, _height,
+							_x1, formatNumber(_y1 + _height*0.25), _width);
 		this.setAttrD(values);
 	};
 	InternalStorage.prototype.symbolId = 'InternalStorage';
