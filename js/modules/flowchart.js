@@ -172,11 +172,11 @@ define('Flowchart',['require', 'jquery', 'helpers', 'handlers', 'modal', 'text!t
 			this.$el
 				.on('click', '.icon.minimize, .icon.restore', this, this.toggleState)
 				.on('click', '.icon.close_dark', this, this.close)
-				.on('mousedown', 'svg', this, _handleCanvasPointerDown)
-				.on('mousemove', 'svg', this, _handleCanvasPointerMove)
-				.on('mouseup mouseleave blur', 'svg', this, _handleCanvasPointerUp)
-				.on('mousedown', '.boxSelector', this, _handleSelectorBoxPointerDown)
-        .on('mousedown', '[class*=slctGrip-]', this, _handleSelectorGripsPointerDown);
+				.on('mousedown touchstart', 'svg', this, _handleCanvasPointerDown)
+				.on('mousemove touchmove', 'svg', this, _handleCanvasPointerMove)
+				.on('mouseup mouseleave blur touchend', 'svg', this, _handleCanvasPointerUp)
+				.on('mousedown touchstart', '.boxSelector', this, _handleSelectorBoxPointerDown)
+        .on('mousedown touchstart', '[class*=slctGrip-]', this, _handleSelectorGripsPointerDown);
 			
 			if(this.isActive) {
 				if(getActFile() && getActFile().id != this.id) getActFile().toggleState();
