@@ -34,7 +34,8 @@ require.config({
   	Sort								: 'modules/sort',
   	MergeStorage				: 'modules/merge_storage',
   	Extract							: 'modules/extract',
-  	InternalStorage			: 'modules/internal_storage'
+  	InternalStorage			: 'modules/internal_storage',
+  	Document						: 'modules/document'
   },
   shim : {
     Flowchart : ['resize'],
@@ -45,7 +46,7 @@ require.config({
     						 'PredefinedProcess', 'AlternateProcess', 'DataInputOutput',
     						 'Preparation', 'Display', 'ManualInput', 'ManualOperation', 'Card',
     						 'OffPageConnector', 'Transfer', 'Collate', 'Sort', 'MergeStorage', 'Extract',
-    						 'InternalStorage']
+    						 'InternalStorage', 'Document']
   }
 });
 require(['init'], function(init) {});
