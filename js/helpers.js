@@ -131,7 +131,7 @@ function genID() {
 function getPointerXY(event) {
 	var _flowchart = getActFile(),
 			_point = _flowchart.svgPoint,
-			_event = event.type.indexOf('touch') >= 0 ? event.originalEvents.touches[0] : event;
+			_event = event.type.indexOf('touch') >= 0 ? event.originalEvent.touches[0] : event;
 			
 	_point.x = _event.clientX;
 	_point.y = _event.clientY;
