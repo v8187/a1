@@ -31,12 +31,14 @@ define('Flowchart',['require', 'jquery', 'helpers', 'handlers', 'modal', 'text!t
       } else if(_selectorHandle.indexOf('s') >= 0) {
         _initialAxis[1] = _shapeAxis[0][1];
       }
+      
     }
     
     function _handleSelectorBoxPointerDown(event) {
       if(ACTION != 'select') return;
       event.stopPropagation();
       event.data.initShapeAction(event, 'drag');
+      return false;
     }
     
     function _handleCanvasPointerDown(event) {
@@ -48,11 +50,14 @@ define('Flowchart',['require', 'jquery', 'helpers', 'handlers', 'modal', 'text!t
             _bCreateElement = true;
             _flowchart.initShapeAction(event, 'resize');
             _initialAxis = clone(_lastAxis);
+            return false;
             break;
           case 'select' :
            if(_flowchart.actShape) _flowchart.actShape.deSelectSelectedShape();
+           return false;
            break;
           case 'connector' :
+          	return false;
           
             break;
           default:
@@ -130,6 +135,7 @@ define('Flowchart',['require', 'jquery', 'helpers', 'handlers', 'modal', 'text!t
         }
         _currentShape.setD();
         _lastAxis = _currentAxis; 
+      	return false;
       }
     }
     
