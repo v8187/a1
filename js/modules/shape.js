@@ -46,7 +46,7 @@ function(require, $, helpers, handlers, modal) {
 	    elG.id = this.id;
 	    this.index = canvas.childNodes.length;
 	    
-	    $(elG).on('mousedown', this, this.select);
+	    $(elG).on('mousedown touchstart', this, this.select);
 	    
 	    this.elG = elG;
 	    this.elPath = elPath;
