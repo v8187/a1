@@ -35,18 +35,27 @@ require.config({
   	MergeStorage				: 'modules/merge_storage',
   	Extract							: 'modules/extract',
   	InternalStorage			: 'modules/internal_storage',
-  	Document						: 'modules/document'
+  	Document						: 'modules/document',
+  	MultiDocument				: 'modules/multi_document',
+  	PunchedTape					: 'modules/punched_tape',
+  	Connector						: 'modules/connector',
+  	Or									: 'modules/or',
+  	SummingJunction			: 'modules/summing_junction',
+  	StoredData					: 'modules/stored_data',
+  	MagneticDisk				: 'modules/magnetic_disk',
+  	DirectAccessStorage	: 'modules/direct_access_storage',
+  	MagneticTape				: 'modules/magnetic_tape',
+  	Callout							: 'modules/callout'
   },
   shim : {
     Flowchart : ['resize'],
     modal     : ['jquery', 'helpers'],
     memory    : ['jquery', 'jstorage'],
-    toolConfig: ['jquery', 'handlers', 'Flowchart', 'Shape', 
-    						 'Process','Terminator', 'Decision', 'Delay', 
-    						 'PredefinedProcess', 'AlternateProcess', 'DataInputOutput',
-    						 'Preparation', 'Display', 'ManualInput', 'ManualOperation', 'Card',
-    						 'OffPageConnector', 'Transfer', 'Collate', 'Sort', 'MergeStorage', 'Extract',
-    						 'InternalStorage', 'Document']
+    toolConfig: ['jquery', 'handlers', 'Flowchart', 'Shape', 'Process','Terminator', 'Decision', 'Delay', 
+    						 'PredefinedProcess', 'AlternateProcess', 'DataInputOutput', 'Preparation', 'Display', 'ManualInput',
+    						 'ManualOperation', 'Card', 'OffPageConnector', 'Transfer', 'Collate', 'Sort', 'MergeStorage', 'Extract',
+    						 'InternalStorage', 'Document', 'MultiDocument', 'PunchedTape', 'Connector', 'Or', 'SummingJunction',
+    						 'StoredData', 'MagneticDisk', 'DirectAccessStorage', 'MagneticTape', 'Callout']
   }
 });
 require(['init'], function(init) {});
