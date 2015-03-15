@@ -1,4 +1,4 @@
-define('Preparation',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbPreparation',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var Preparation = function(settings) {
@@ -19,7 +19,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 		
 		this.setAttrD(values);
 	};
-	Preparation.prototype.symbolId = 'Preparation';
+	Preparation.prototype.symbolId = 'smbPreparation';
 	Preparation.prototype.name = 'Preparation';
 	
 	return Preparation;

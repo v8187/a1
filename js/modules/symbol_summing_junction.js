@@ -1,4 +1,4 @@
-define('SummingJunction',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbSummingJunction',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var SummingJunction = function(settings) {
@@ -22,7 +22,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 		
 		this.setAttrD(values);
 	};
-	SummingJunction.prototype.symbolId = 'SummingJunction';
+	SummingJunction.prototype.symbolId = 'smbSummingJunction';
 	SummingJunction.prototype.name = 'Summing Junction';
 	
 	return SummingJunction;

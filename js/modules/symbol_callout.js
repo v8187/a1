@@ -1,4 +1,4 @@
-define('Callout',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbCallout',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var Callout = function(settings) {
@@ -18,7 +18,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 		
 		this.setAttrD(values);
 	};
-	Callout.prototype.symbolId = 'Callout';
+	Callout.prototype.symbolId = 'smbCallout';
 	Callout.prototype.name = 'Callout';
 	
 	return Callout;

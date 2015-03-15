@@ -20,7 +20,7 @@ require(['jquery', 'jstorage', 'Flowchart'],
       $.jStorage.set('_lsf_', {af: _af, mf: _mf});
     }
     function _setTools() {
-      $.jStorage.set('_lstls_', {epd:_toolsExpanded, acd:_toolsAccordion, tool: ACTION, sbl: SYMBOL});
+      $.jStorage.set('_lstls_', {epd:_toolsExpanded, acd:_toolsAccordion, tool: TOOL, sbl: SYMBOL});
     }
     function _setColors() {
       $.jStorage.set('_lsclr_', {id: _colorEleId, c:COLOR, f:COLOR_FILL, b:COLOR_BORDER, t:COLOR_TEXT});
@@ -47,7 +47,7 @@ require(['jquery', 'jstorage', 'Flowchart'],
       _selectedShape = argFile.actShape;
       _shapes = argFile.shapes;
       _ms = _cloned.shapes;
-      _as = _selectedShape ? _ms[_selectedShape.index] : null;
+      _as = _selectedShape ? _ms[_selectedShape.zIndex] : null;
       
       _setFiles();
     }
@@ -140,7 +140,7 @@ require(['jquery', 'jstorage', 'Flowchart'],
       _setTools();
     });
     Action.subscribe('tool-changed', function(value) {
-      ACTION = value;
+      TOOL = value;
       _setTools();
     });
     Action.subscribe('symbol-changed', function(value) {
@@ -276,47 +276,47 @@ require(['jquery', 'jstorage', 'Flowchart'],
       disableShapeTools();
     });
     Action.subscribe('shape-removed', function(shape) {
-    	var _index = shape.index;
+    	var _index = shape.zIndex;
     	for(var i = _index + 1; i < _shapes.length; i++) {
-    		_ms[i].index = _shapes[i].index -= 1;
+    		_ms[i].zIndex = _shapes[i].zIndex -= 1;
     	}
     	_shapes.splice(_index, 1);
     	_ms.splice(_index, 1);
       _resetShapeVars();
     });
     Action.subscribe('shape-to-front', function(shape) {
-    	var _index = shape.index;
-    	_ms[_index].index = _shapes[_index].index = shape.index = _shapes.length - 1;
+    	var _index = shape.zIndex;
+    	_ms[_index].zIndex = _shapes[_index].zIndex = shape.zIndex = _shapes.length - 1;
     	for(var i = _index + 1; i < _shapes.length; i++) {
-    		_ms[i].index = _shapes[i].index -= 1;
+    		_ms[i].zIndex = _shapes[i].zIndex -= 1;
     	}
     	_shapes.push(_shapes.splice(_index, 1)[0]);
     	_ms.push(_ms.splice(_index, 1)[0]);
       _setFiles();
     });
     Action.subscribe('shape-to-back', function(shape) {
-    	var _index = shape.index;
-    	_ms[_index].index = _shapes[_index].index = shape.index = 0;
+    	var _index = shape.zIndex;
+    	_ms[_index].zIndex = _shapes[_index].zIndex = shape.zIndex = 0;
     	for(var i = 0; i < _index; i++) {
-    		_ms[i].index = _shapes[i].index += 1;
+    		_ms[i].zIndex = _shapes[i].zIndex += 1;
     	}
     	_shapes.unshift(_shapes.splice(_index, 1)[0]);
     	_ms.unshift(_ms.splice(_index, 1)[0]);
       _setFiles();
     });
     Action.subscribe('shape-to-forward', function(shape) {
-    	var _index = shape.index;
-    	_ms[_index].index = _shapes[_index].index += 1;
-    	_ms[_index + 1].index = _shapes[_index + 1].index = _index;
+    	var _index = shape.zIndex;
+    	_ms[_index].zIndex = _shapes[_index].zIndex += 1;
+    	_ms[_index + 1].zIndex = _shapes[_index + 1].zIndex = _index;
     	
     	_shapes.splice(_index + 1, 0, _shapes.splice(_index, 1)[0]);
     	_ms.splice(_index + 1, 0, _ms.splice(_index, 1)[0]);
       _setFiles();
     });
     Action.subscribe('shape-to-backward', function(shape) {
-    	var _index = shape.index;
-    	_ms[_index].index = _shapes[_index].index -= 1;
-    	_ms[_index - 1].index = _shapes[_index - 1].index = _index;
+    	var _index = shape.zIndex;
+    	_ms[_index].zIndex = _shapes[_index].zIndex -= 1;
+    	_ms[_index - 1].zIndex = _shapes[_index - 1].zIndex = _index;
     	
     	_shapes.splice(_index - 1, 0, _shapes.splice(_index, 1)[0]);
     	_ms.splice(_index - 1, 0, _ms.splice(_index, 1)[0]);
@@ -368,8 +368,8 @@ require(['jquery', 'jstorage', 'Flowchart'],
           Action.publish('tool-state-changed', false);
         }
         if(data.tool) {
-          ACTION = data.tool;
-          $('[value="' + ACTION + '"]').prop('checked',true);
+          TOOL = data.tool;
+          $('[value="' + TOOL + '"]').prop('checked',true);
         }
         if(data.sbl) {
           SYMBOL = data.sbl;

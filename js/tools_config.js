@@ -28,7 +28,7 @@ require(['Flowchart'], function(Flowchart) {
         _shapesCount = getShapes().length;
     
     if(_selectedShape && _shapesCount) {
-      var _index = _selectedShape.index;
+      var _index = _selectedShape.zIndex;
       
       bool = _index < _shapesCount - 1 ? false : true;
       $('#ctrlEdit_Front').prop('disabled', bool);

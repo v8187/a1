@@ -1,4 +1,4 @@
-define('MagneticTape',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbMagneticTape',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var MagneticTape = function(settings) {
@@ -18,7 +18,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 		
 		this.setAttrD(values);
 	};
-	MagneticTape.prototype.symbolId = 'MagneticTape';
+	MagneticTape.prototype.symbolId = 'smbMagneticTape';
 	MagneticTape.prototype.name = 'Sequential Access Storage (Magnetic Tape)';
 	
 	return MagneticTape;

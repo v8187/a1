@@ -657,30 +657,33 @@ section.toolBox a {
       right: 1px;
       bottom: 1px;
       cursor: se-resize; }
-  .flwc_wrapper .gSelector rect {
+  .flwc_wrapper .shpSelector rect {
     stroke: #333; }
-  .flwc_wrapper .gSelector .boxSelector {
+  .flwc_wrapper .shpSelector .boxSelector {
     fill: transparent;
     display: inline;
     stroke-dasharray: 5,5;
     cursor: move; }
-  .flwc_wrapper .gSelector [class*=slctGrip-] {
-    fill: #fff; }
-  .flwc_wrapper .gSelector .slctGrip-nw {
+  .flwc_wrapper .conSelector rect {
+    stroke: #333; }
+  .flwc_wrapper [class*=slctGrip-] {
+    fill: #fff;
     cursor: nw-resize; }
-  .flwc_wrapper .gSelector .slctGrip-n {
+  .flwc_wrapper .slctGrip-nw {
+    cursor: nw-resize; }
+  .flwc_wrapper .slctGrip-n {
     cursor: n-resize; }
-  .flwc_wrapper .gSelector .slctGrip-ne {
+  .flwc_wrapper .slctGrip-ne {
     cursor: ne-resize; }
-  .flwc_wrapper .gSelector .slctGrip-e {
+  .flwc_wrapper .slctGrip-e {
     cursor: e-resize; }
-  .flwc_wrapper .gSelector .slctGrip-se {
+  .flwc_wrapper .slctGrip-se {
     cursor: se-resize; }
-  .flwc_wrapper .gSelector .slctGrip-s {
+  .flwc_wrapper .slctGrip-s {
     cursor: s-resize; }
-  .flwc_wrapper .gSelector .slctGrip-sw {
+  .flwc_wrapper .slctGrip-sw {
     cursor: sw-resize; }
-  .flwc_wrapper .gSelector .slctGrip-w {
+  .flwc_wrapper .slctGrip-w {
     cursor: w-resize; }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,4 +1,4 @@
-define('Transfer',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbTransfer',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var Transfer = function(settings) {
@@ -18,7 +18,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 									
 		this.setAttrD(values);
 	};
-	Transfer.prototype.symbolId = 'Transfer';
+	Transfer.prototype.symbolId = 'smbTransfer';
 	Transfer.prototype.name = 'Transfer';
 	
 	return Transfer;

@@ -1,4 +1,4 @@
-define('Or',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbOr',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var Or = function(settings) {
@@ -19,7 +19,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 		
 		this.setAttrD(values);
 	};
-	Or.prototype.symbolId = 'Or';
+	Or.prototype.symbolId = 'smbOr';
 	Or.prototype.name = 'Or';
 	
 	return Or;

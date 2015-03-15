@@ -1,4 +1,4 @@
-define('MagneticDisk',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbMagneticDisk',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var MagneticDisk = function(settings) {
@@ -20,7 +20,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 		
 		this.setAttrD(values);
 	};
-	MagneticDisk.prototype.symbolId = 'MagneticDisk';
+	MagneticDisk.prototype.symbolId = 'smbMagneticDisk';
 	MagneticDisk.prototype.name = 'Magnetic Disk';
 	
 	return MagneticDisk;

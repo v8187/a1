@@ -1,4 +1,4 @@
-define('Terminator',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbTerminator',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var Terminator = function(settings) {
@@ -19,7 +19,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 									
 		this.setAttrD(values);
 	};
-	Terminator.prototype.symbolId = 'Terminator';
+	Terminator.prototype.symbolId = 'smbTerminator';
 	Terminator.prototype.name = 'Terminator';
 	
 	return Terminator;

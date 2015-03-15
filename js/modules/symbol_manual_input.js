@@ -1,4 +1,4 @@
-define('ManualInput',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbManualInput',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var ManualInput = function(settings) {
@@ -15,7 +15,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 									
 		this.setAttrD(values);
 	};
-	ManualInput.prototype.symbolId = 'ManualInput';
+	ManualInput.prototype.symbolId = 'smbManualInput';
 	ManualInput.prototype.name = 'Manual Input';
 	
 	return ManualInput;

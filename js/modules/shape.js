@@ -44,7 +44,7 @@ function(require, $, helpers, handlers, modal) {
       appendElement(elG, [elPath, elText]);
       
 	    elG.id = this.id;
-	    this.index = canvas.childNodes.length;
+	    this.zIndex = canvas.childNodes.length;
 	    
 	    $(elG).on('mousedown touchstart', this, this.select);
 	    
@@ -54,7 +54,7 @@ function(require, $, helpers, handlers, modal) {
 	    
 	    appendElement(canvas, elG);
 	    
-	    if(!this.parent.shapes[this.index] || this.id != this.parent.shapes[this.index].id) {
+	    if(!this.parent.shapes.contains(this.id, 'id')) {
 	    	this.parent.shapes.push(this);
 	    }
 	    
@@ -64,7 +64,8 @@ function(require, $, helpers, handlers, modal) {
 	        _actShape.isSelected = false;
 	      }
 	      this.parent.actShape = this;
-	      if(!this.parent.selector.isVisible()) this.parent.selector.show();
+	      if(!this.parent.shpSelector.isVisible()) this.parent.shpSelector.show();
+	      this.parent.conSelector.hide()
 	    }
 	  },
 	  bringToFront : function() {
@@ -77,7 +78,7 @@ function(require, $, helpers, handlers, modal) {
 	  },
 	  sendToBack : function() {
       var self = this.elG;
-      if(this.index > 0) {
+      if(this.zIndex > 0) {
         self.parentNode.insertBefore(self, self.parentNode.firstChild);
         Action.publish('shape-to-back', this);
       }
@@ -86,15 +87,15 @@ function(require, $, helpers, handlers, modal) {
     bringForward : function() {
       var self = this.elG;
       if(self.parentNode.lastChild != self) {
-        self.parentNode.insertBefore(self.parentNode.childNodes[this.index + 1], self);
+        self.parentNode.insertBefore(self.parentNode.childNodes[this.zIndex + 1], self);
         Action.publish('shape-to-forward', this);
       }
       return this;
     },
     sendBackward : function() {
       var self = this.elG;
-      if(this.index > 0) {
-        self.parentNode.insertBefore(self, self.parentNode.childNodes[this.index - 1]);
+      if(this.zIndex > 0) {
+        self.parentNode.insertBefore(self, self.parentNode.childNodes[this.zIndex - 1]);
         Action.publish('shape-to-backward', this);
       }
       return this;
@@ -143,9 +144,9 @@ function(require, $, helpers, handlers, modal) {
       };
 		      
       for(key in _gripNodeData) {
-        getElement('.slctGrip-' + key, this.parent.selector)[0].attr(_gripNodeData[key]);
+        getElement('.slctGrip-' + key, this.parent.shpSelector)[0].attr(_gripNodeData[key]);
       }
-			getElement('.boxSelector', this.parent.selector)[0].attr({
+			getElement('.boxSelector', this.parent.shpSelector)[0].attr({
 			  x : _x,
 			  y : _y,
 			  width : _width,
@@ -157,12 +158,12 @@ function(require, $, helpers, handlers, modal) {
 		    var _parent = this.parent;
 		    _parent.actShape.isSelected = false;
 		    _parent.actShape = null;
-		    _parent.selector.hide();
+		    _parent.shpSelector.hide();
 		    if(!silent) Action.publish('shape-deselected', _parent.shapes[_parent.shapes.length - 1]);
 		  }
 		},
 		select : function(event) {
-			if(ACTION != 'select') return;
+			if(TOOL != 'select') return;
 			
 			var _shape = event.data,
 					_parent = _shape.parent;
@@ -172,8 +173,8 @@ function(require, $, helpers, handlers, modal) {
 		  _shape.positionSelector();
 		  _parent.actShape = _shape;
 		  event.stopPropagation();
-		  _parent.initShapeAction(event, 'drag');
-		  _parent.selector.show();
+		  _parent.initiateTask(event, 'drag');
+		  _parent.shpSelector.show();
 		  Action.publish('shape-selected', _shape);
 		},
 		copy : function() {
@@ -185,7 +186,7 @@ function(require, $, helpers, handlers, modal) {
 	    var _parent = this.parent;
 	    this.elG.remove();
 	    _parent.actShape = null;
-	    _parent.selector.hide();
+	    _parent.shpSelector.hide();
 	    Action.publish('shape-removed', this);
 	  },
 	  setFill : function() {
@@ -237,7 +238,8 @@ function(require, $, helpers, handlers, modal) {
 	  constructor : Shape,
 	  toString : function() {
 	    return '[Shape - ' + this.name + ']';
-	  }
+	  },
+	  type : 'Shape'
 	};
 	
 	return Shape;

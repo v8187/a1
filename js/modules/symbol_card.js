@@ -1,4 +1,4 @@
-define('Card',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbCard',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var Card = function(settings) {
@@ -16,7 +16,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 									
 		this.setAttrD(values);
 	};
-	Card.prototype.symbolId = 'Card';
+	Card.prototype.symbolId = 'smbCard';
 	Card.prototype.name = 'Card';
 	
 	return Card;

@@ -1,4 +1,4 @@
-define('DataInputOutput',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbDataInputOutput',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var DataInputOutput = function(settings) {
@@ -23,7 +23,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 									
 		this.setAttrD(values);
 	};
-	DataInputOutput.prototype.symbolId = 'DataInputOutput';
+	DataInputOutput.prototype.symbolId = 'smbDataInputOutput';
 	DataInputOutput.prototype.name = 'Data (Input/Output)';
 	
 	return DataInputOutput;

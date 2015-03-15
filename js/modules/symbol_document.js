@@ -1,4 +1,4 @@
-define('Document',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbDocument',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var Document = function(settings) {
@@ -19,7 +19,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 		
 		this.setAttrD(values);
 	};
-	Document.prototype.symbolId = 'Document';
+	Document.prototype.symbolId = 'smbDocument';
 	Document.prototype.name = 'Document';
 	
 	return Document;

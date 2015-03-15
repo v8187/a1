@@ -1,4 +1,4 @@
-define('StoredData',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbStoredData',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var StoredData = function(settings) {
@@ -19,7 +19,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 		
 		this.setAttrD(values);
 	};
-	StoredData.prototype.symbolId = 'StoredData';
+	StoredData.prototype.symbolId = 'smbStoredData';
 	StoredData.prototype.name = 'Stored Data';
 	
 	return StoredData;

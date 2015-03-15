@@ -1,4 +1,4 @@
-define('Extract',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbExtract',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var Extract = function(settings) {
@@ -16,7 +16,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 									
 		this.setAttrD(values);
 	};
-	Extract.prototype.symbolId = 'Extract';
+	Extract.prototype.symbolId = 'smbExtract';
 	Extract.prototype.name = 'Extract (Measurement) (Finished Goods)';
 	
 	return Extract;

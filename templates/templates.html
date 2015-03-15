@@ -12,7 +12,7 @@
 				<symbol id="templateSelector">
 					<g fc:for="g_shp14143400295030">
 						<rect class="slctBox" x="104" y="122" width="154" height="103" fill="transparent" stroke="#222" stroke-dasharray="4,4" style="cursor:move;" id="slctBox0" display="inline"></rect>
-						<g class="slctGrips" display="inline" id="slctGrips0">
+						<g class="slctGrips" display="inline">
 							<rect class="slctGrip_nw" fc:handle="nw" style="cursor:nw-resize" x="101" y="119" width="6" height="6" fill="#fff" stroke="#222"></rect>
 							<rect class="slctGrip_n" fc:handle="n" style="cursor:n-resize" x="178" y="119" width="6" height="6" fill="#fff" stroke="#222"></rect>
 							<rect class="slctGrip_ne" fc:handle="ne" style="cursor:ne-resize" x="254" y="119" width="6" height="6" fill="#fff" stroke="#222"></rect>
@@ -25,18 +25,22 @@
 					</g>
 				</symbol>
 				<g name="canvas" width="100%" height="100%"></g>
-				<g class="gSelector" style="display:none;">
+				<g class="shpSelector" style="display:none;">
 					<rect class="boxSelector" x="104" y="122" width="154" height="103"></rect>
-					<g class="slctGrips" display="inline" id="slctGrips0">
-						<rect class="slctGrip-nw" fc:handle="nw" x="101" y="119" width="6" height="6"></rect>
-						<rect class="slctGrip-n" fc:handle="n" x="178" y="119" width="6" height="6"></rect>
-						<rect class="slctGrip-ne" fc:handle="ne" x="254" y="119" width="6" height="6"></rect>
-						<rect class="slctGrip-e" fc:handle="e" x="254" y="170.5" width="6" height="6"></rect>
-						<rect class="slctGrip-se" fc:handle="se" x="254" y="221" width="6" height="6"></rect>
-						<rect class="slctGrip-s" fc:handle="s" x="178" y="221" width="6" height="6"></rect>
-						<rect class="slctGrip-sw" fc:handle="sw" x="101" y="221" width="6" height="6"></rect>
-						<rect class="slctGrip-w" fc:handle="w" x="101" y="170.5" width="6" height="6"></rect>
+					<g class="slctGrips" display="inline">
+						<rect class="slctGrip-nw" fc:handle="nw" fc:for="Shape" x="101" y="119" width="6" height="6"></rect>
+						<rect class="slctGrip-n" fc:handle="n" fc:for="Shape" x="178" y="119" width="6" height="6"></rect>
+						<rect class="slctGrip-ne" fc:handle="ne" fc:for="Shape" x="254" y="119" width="6" height="6"></rect>
+						<rect class="slctGrip-e" fc:handle="e" fc:for="Shape" x="254" y="170.5" width="6" height="6"></rect>
+						<rect class="slctGrip-se" fc:handle="se" fc:for="Shape" x="254" y="221" width="6" height="6"></rect>
+						<rect class="slctGrip-s" fc:handle="s" fc:for="Shape" x="178" y="221" width="6" height="6"></rect>
+						<rect class="slctGrip-sw" fc:handle="sw" fc:for="Shape" x="101" y="221" width="6" height="6"></rect>
+						<rect class="slctGrip-w" fc:handle="w" fc:for="Shape" x="101" y="170.5" width="6" height="6"></rect>
 					</g>
+				</g>
+				<g class="conSelector" style="display:none;">
+					<rect class="slctGrip-first" fc:handle="first" fc:for="Connector" x="101" y="119" width="6" height="6"></rect>
+					<rect class="slctGrip-last" fc:handle="last" fc:for="Connector" x="178" y="119" width="6" height="6"></rect>
 				</g>
 			</svg>
 			<span class="icon resize_se"></span>

@@ -1,4 +1,4 @@
-define('Process',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbProcess',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var Process = function(settings) {
@@ -21,7 +21,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 		values.push(border > 0 ? _axis[0][1] - border / 2 : _axis[0][1]);
 		this.setAttrD(values);
 	};
-	Process.prototype.symbolId = 'Process';
+	Process.prototype.symbolId = 'smbProcess';
 	Process.prototype.name = 'Process';
 	
 	return Process;

@@ -1,4 +1,4 @@
-define('Collate',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbCollate',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var Collate = function(settings) {
@@ -15,7 +15,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 									
 		this.setAttrD(values);
 	};
-	Collate.prototype.symbolId = 'Collate';
+	Collate.prototype.symbolId = 'smbCollate';
 	Collate.prototype.name = 'Collate';
 	
 	return Collate;

@@ -1,4 +1,4 @@
-define('Decision',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbDecision',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var Decision = function(settings) {
@@ -22,7 +22,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 		values.push(border > 0 ? _y1 - border / 2 : _y1);
 		this.setAttrD(values);
 	};
-	Decision.prototype.symbolId = 'Decision';
+	Decision.prototype.symbolId = 'smbDecision';
 	Decision.prototype.name = 'Decision';
 	
 	return Decision;

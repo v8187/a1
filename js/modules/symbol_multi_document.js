@@ -1,4 +1,4 @@
-define('MultiDocument',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbMultiDocument',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var MultiDocument = function(settings) {
@@ -22,7 +22,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 		
 		this.setAttrD(values);
 	};
-	MultiDocument.prototype.symbolId = 'MultiDocument';
+	MultiDocument.prototype.symbolId = 'smbMultiDocument';
 	MultiDocument.prototype.name = 'Multi Document';
 	
 	return MultiDocument;

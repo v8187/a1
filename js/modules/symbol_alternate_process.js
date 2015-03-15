@@ -1,4 +1,4 @@
-define('AlternateProcess',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbAlternateProcess',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var AlternateProcess = function(settings) {
@@ -19,7 +19,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 									
 		this.setAttrD(values);
 	};
-	AlternateProcess.prototype.symbolId = 'AlternateProcess';
+	AlternateProcess.prototype.symbolId = 'smbAlternateProcess';
 	AlternateProcess.prototype.name = 'Alternate Process';
 	
 	return AlternateProcess;

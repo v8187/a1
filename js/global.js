@@ -19,8 +19,8 @@ keyCode = {
 };
 
 // Global Constants
-ACTION = 'select';
-SYMBOL = 'Process';
+TOOL = 'select';
+SYMBOL = 'smbProcess';
 CONTROL = null;
 
 COLOR = '#a95d19';
@@ -106,6 +106,18 @@ SVGElement.prototype.index = function() {
     if(nodes[index] == this) return index;
   }
   return -1;
+};
+
+Array.prototype.contains = function(value, indentifier) {
+	if(value !== undefined){
+		for(var i=0; i < this.length; i++) {
+			var thisVal = indentifier ? this[i][indentifier] : this[i];
+			if(thisVal == value) {
+				return true;
+			}
+		}
+	}
+	return false;
 };
 
 // Global namespace for Publishers/Subscribers for Application activities

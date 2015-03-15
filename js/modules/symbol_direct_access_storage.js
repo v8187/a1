@@ -1,4 +1,4 @@
-define('DirectAccessStorage',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbDirectAccessStorage',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var DirectAccessStorage = function(settings) {
@@ -21,7 +21,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 		
 		this.setAttrD(values);
 	};
-	DirectAccessStorage.prototype.symbolId = 'DirectAccessStorage';
+	DirectAccessStorage.prototype.symbolId = 'smbDirectAccessStorage';
 	DirectAccessStorage.prototype.name = 'Direct Access Storage';
 	
 	return DirectAccessStorage;

@@ -1,4 +1,4 @@
-define('PunchedTape',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbPunchedTape',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var PunchedTape = function(settings) {
@@ -21,7 +21,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 		
 		this.setAttrD(values);
 	};
-	PunchedTape.prototype.symbolId = 'PunchedTape';
+	PunchedTape.prototype.symbolId = 'smbPunchedTape';
 	PunchedTape.prototype.name = 'Punched Tape';
 	
 	return PunchedTape;

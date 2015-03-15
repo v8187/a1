@@ -1,4 +1,4 @@
-define('Display',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbDisplay',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var Display = function(settings) {
@@ -19,7 +19,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 		
 		this.setAttrD(values);
 	};
-	Display.prototype.symbolId = 'Display';
+	Display.prototype.symbolId = 'smbDisplay';
 	Display.prototype.name = 'Display';
 	
 	return Display;
