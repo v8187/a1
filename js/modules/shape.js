@@ -35,15 +35,15 @@ function(require, $, helpers, handlers, modal) {
 	Shape.prototype = {
 	  render : function() {
 	    var elG = svgCreateElement('g'),
-          elPath = svgCreateElement('path'),
+          ele = svgCreateElement('path'),
           elText = svgCreateElement('text'),
           label = svgCreateElement(this.label, true),
           canvas = this.parent.canvas;
 	    
-	    elPath.attr(this.attr);
+	    ele.attr(this.attr);
       elText.attr(this.textAttr);
       appendElement(elText, label);
-      appendElement(elG, [elPath, elText]);
+      appendElement(elG, [ele, elText]);
       
 	    elG.id = this.id;
 	    this.zIndex = canvas.childNodes.length;
@@ -51,7 +51,7 @@ function(require, $, helpers, handlers, modal) {
 	    $(elG).on('mousedown touchstart', this, this.select);
 	    
 	    this.elG = elG;
-	    this.elPath = elPath;
+	    this.ele = ele;
 	    this.elText = elText;
 	    
 	    appendElement(canvas, elG);
@@ -103,7 +103,7 @@ function(require, $, helpers, handlers, modal) {
     },
 	  setAttrD : function(values) {
 	    this.d = compileAttrD(this.template, values);
-      this.elPath.attr({'d' : this.d});
+      this.ele.attr({'d' : this.d});
       this.positionLabel();
       if(this.isSelected) this.positionSelector();
 	  },
@@ -192,16 +192,16 @@ function(require, $, helpers, handlers, modal) {
 	    Action.publish('shape-removed', this);
 	  },
 	  setFill : function() {
-	    this.elPath.attr({fill : this.attr.fill = COLOR_FILL});
+	    this.ele.attr({fill : this.attr.fill = COLOR_FILL});
 	  },
 	  setFillOpacity : function() {
       console.log('setFillOpacity fired..');
     },
     setStroke : function() {
-      this.elPath.attr({stroke : this.attr.stroke = COLOR_BORDER});
+      this.ele.attr({stroke : this.attr.stroke = COLOR_BORDER});
     },
     setStrokeWidth : function() {
-      this.elPath.attr({'stroke-width' : this.attr['stroke-width'] = BORDER_WIDTH});
+      this.ele.attr({'stroke-width' : this.attr['stroke-width'] = BORDER_WIDTH});
       this.setD();
     },
     setStrokeOpacity : function() {

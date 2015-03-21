@@ -13,15 +13,15 @@ function(require, $, helpers, handlers, modal, Shape) {
 	Connector.inherits(Shape);
 	Connector.prototype.render = function() {
     var elG = svgCreateElement('g'),
-        elLine = svgCreateElement('polyline'),
+        ele = svgCreateElement('polyline'),
         elText = svgCreateElement('text'),
         label = svgCreateElement(this.label, true),
         canvas = this.parent.canvas;
     
-    elLine.attr(this.attr);
+    ele.attr(this.attr);
     elText.attr(this.textAttr);
     appendElement(elText, label);
-    appendElement(elG, [elLine, elText]);
+    appendElement(elG, [ele, elText]);
     
     elG.id = this.id;
     this.zIndex = canvas.childNodes.length;
@@ -29,7 +29,7 @@ function(require, $, helpers, handlers, modal, Shape) {
     $(elG).on('mousedown touchstart', this, this.select);
     
     this.elG = elG;
-    this.elLine = elLine;
+    this.ele = ele;
     this.elText = elText;
     
     appendElement(canvas, elG);
@@ -49,7 +49,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 	};
 	Connector.prototype.setPoints = function() {
     this.points = this.axis.join().replace(/,/g,' ');
-    this.elLine.attr({'points' : this.points});
+    this.ele.attr({'points' : this.points});
     this.positionLabel();
     if(this.isSelected) this.positionSelector();
  	};
@@ -85,7 +85,7 @@ function(require, $, helpers, handlers, modal, Shape) {
   	});
 	};
 	Connector.prototype.setFill = function() {
-    this.elLine.attr({fill : this.attr.fill = 'transparent'});
+    this.ele.attr({fill : this.attr.fill = 'transparent'});
  	};
 	Connector.prototype.constructor = Connector;
 	Connector.prototype.type = 'Connector';
