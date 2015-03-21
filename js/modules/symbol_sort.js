@@ -1,4 +1,4 @@
-define('Sort',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbSort',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var Sort = function(settings) {
@@ -17,7 +17,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 									
 		this.setAttrD(values);
 	};
-	Sort.prototype.symbolId = 'Sort';
+	Sort.prototype.symbolId = 'smbSort';
 	Sort.prototype.name = 'Sort';
 	
 	return Sort;

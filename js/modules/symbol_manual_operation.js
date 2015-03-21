@@ -1,4 +1,4 @@
-define('ManualOperation',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbManualOperation',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var ManualOperation = function(settings) {
@@ -17,7 +17,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 									
 		this.setAttrD(values);
 	};
-	ManualOperation.prototype.symbolId = 'ManualOperation';
+	ManualOperation.prototype.symbolId = 'smbManualOperation';
 	ManualOperation.prototype.name = 'Manual Operation';
 	
 	return ManualOperation;

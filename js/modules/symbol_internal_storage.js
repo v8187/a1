@@ -1,4 +1,4 @@
-define('InternalStorage',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbInternalStorage',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var InternalStorage = function(settings) {
@@ -21,7 +21,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 							_x1, formatNumber(_y1 + _height*0.25), _width);
 		this.setAttrD(values);
 	};
-	InternalStorage.prototype.symbolId = 'InternalStorage';
+	InternalStorage.prototype.symbolId = 'smbInternalStorage';
 	InternalStorage.prototype.name = 'Internal Storage';
 	
 	return InternalStorage;

@@ -1,4 +1,4 @@
-define('OffPageConnector',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbOffPageConnector',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var OffPageConnector = function(settings) {
@@ -17,7 +17,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 									
 		this.setAttrD(values);
 	};
-	OffPageConnector.prototype.symbolId = 'OffPageConnector';
+	OffPageConnector.prototype.symbolId = 'smbOffPageConnector';
 	OffPageConnector.prototype.name = 'Off Page Connector';
 	
 	return OffPageConnector;

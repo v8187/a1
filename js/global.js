@@ -19,8 +19,8 @@ keyCode = {
 };
 
 // Global Constants
-ACTION = 'select';
-SYMBOL = 'Process';
+TOOL = 'select';
+SYMBOL = 'smbProcess';
 CONTROL = null;
 
 COLOR = '#a95d19';
@@ -108,35 +108,68 @@ SVGElement.prototype.index = function() {
   return -1;
 };
 
+Array.prototype.contains = function(value, indentifier) {
+	if(value !== undefined){
+		for(var i=0; i < this.length; i++) {
+			var thisVal = indentifier ? this[i][indentifier] : this[i];
+			if(thisVal == value) {
+				return true;
+			}
+		}
+	}
+	return false;
+};
+
 // Global namespace for Publishers/Subscribers for Application activities
 // Refernced form http://davidwalsh.name/pubsub-javascript
 Action = (function(){
-  var actions = {};
+  var subscriptions = {},
+  		history = [];
 
+  function subscribe(action, listener) {
+  	// Create the action's object if not yet created
+  	if(!subscriptions[action]) subscriptions[action] = [];
+  	// Add the listener to queue
+  	var index = subscriptions[action].push(listener) -1;
+  	
+  	return {
+  		unsubscribe : function() {
+	  		delete subscriptions[action][index];
+	  	}
+  	}; 
+  }
+  
+  function publish(action, info) {
+    // If the action doesn't exist, or there's no listeners in queue, just leave
+    if(!subscriptions[action] || !subscriptions[action].length) return;
+
+    // Cycle through subscriptions queue, fire!
+    var items = subscriptions[action];
+    items.forEach(function(item) {
+    		item(info);
+    });
+  }
+  
+  function saveState() {
+  	
+  }
+  
+  function undo() {
+  	
+  } 
+  
+  function redo() {
+  	
+  }
+  
+  function getSubscriptions() {
+  	return subscriptions;
+  }
+  
   return {
-    subscribe: function(action, listener) {
-    	
-    	var arrActions = action.split(' ');
-    	for(var i=0; i < arrActions.length; i++) {
-    		// Create the action's object if not yet created
-      	if(!actions[arrActions[i]]) actions[arrActions[i]] = { queue: [] };
-      	// Add the listener to queue
-      	var index = actions[arrActions[i]].queue.push(listener) -1;
-    	}
-    },
-    unsubscribe : function(action, listener) {
-    	//removeFromList()
-    	//delete actions[action].queue[index];
-    },
-    publish: function(action, info) {
-      // If the action doesn't exist, or there's no listeners in queue, just leave
-      if(!actions[action] || !actions[action].queue.length) return;
-
-      // Cycle through actions queue, fire!
-      var items = actions[action].queue;
-      items.forEach(function(item) {
-      		item(info);
-      });
-    }
+    'subscribe' : subscribe,
+    'publish' : publish,
+    'saveState' : saveState,
+    'getSubscriptions' : getSubscriptions
   };
 })();

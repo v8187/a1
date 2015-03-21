@@ -1,4 +1,4 @@
-define('Delay',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbDelay',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var Delay = function(settings) {
@@ -19,7 +19,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 		
 		this.setAttrD(values);
 	};
-	Delay.prototype.symbolId = 'Delay';
+	Delay.prototype.symbolId = 'smbDelay';
 	Delay.prototype.name = 'Delay';
 	
 	return Delay;

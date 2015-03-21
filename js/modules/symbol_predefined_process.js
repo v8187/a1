@@ -1,4 +1,4 @@
-define('PredefinedProcess',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbPredefinedProcess',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var PredefinedProcess = function(settings) {
@@ -21,7 +21,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 							_x2 - _width, _y1, _height);
 		this.setAttrD(values);
 	};
-	PredefinedProcess.prototype.symbolId = 'PredefinedProcess';
+	PredefinedProcess.prototype.symbolId = 'smbPredefinedProcess';
 	PredefinedProcess.prototype.name = 'Predefined Process';
 	
 	return PredefinedProcess;

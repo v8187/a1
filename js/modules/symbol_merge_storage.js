@@ -1,4 +1,4 @@
-define('MergeStorage',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
+define('smbMergeStorage',['require', 'jquery', 'helpers', 'handlers', 'modal', 'Shape'], 
 function(require, $, helpers, handlers, modal, Shape) {
 	
 	var MergeStorage = function(settings) {
@@ -17,7 +17,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 									
 		this.setAttrD(values);
 	};
-	MergeStorage.prototype.symbolId = 'MergeStorage';
+	MergeStorage.prototype.symbolId = 'smbMergeStorage';
 	MergeStorage.prototype.name = 'Merge (Storage)';
 	
 	return MergeStorage;

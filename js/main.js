@@ -1,0 +1,66 @@
+require.config({
+  waitSeconds: 0,
+  paths: {
+  	global							: 'global',
+  	jquery    					: 'libs/jquery-1.11.0.min',
+    json2     					: 'plugins/json2',
+    jstorage  					: 'plugins/jstorage',
+  	farbtastic					: 'plugins/farbtastic',
+  	accordion 					: 'plugins/vik.accordion',
+  	spinner   					: 'plugins/vik.spinner',
+  	modal     					: 'plugins/vik.modal',
+  	resize    					: 'plugins/vik.resizer',
+  	memory 							: 'memory',
+  	toolConfig					: 'tools_config',
+  	templates 					: '../templates',
+  	
+  	Flowchart						: 'modules/flowchart',
+  	Shape								: 'modules/shape',
+		Connector						: 'modules/connector',
+  	// Symbols
+  	smbAlternateProcess  	: 'modules/symbol_alternate_process',
+		smbCallout						: 'modules/symbol_callout',
+		smbCard								: 'modules/symbol_card',
+		smbCollate						: 'modules/symbol_collate',
+		smbConnector					: 'modules/symbol_connector',
+		smbDataInputOutput		: 'modules/symbol_data_input_output',
+		smbDecision						: 'modules/symbol_decision',
+		smbDelay							: 'modules/symbol_delay',
+		smbDirectAccessStorage: 'modules/symbol_direct_access_storage',
+		smbDisplay						: 'modules/symbol_display',
+		smbDocument						: 'modules/symbol_document',
+		smbExtract						: 'modules/symbol_extract',
+		smbInternalStorage		: 'modules/symbol_internal_storage',
+		smbMagneticDisk				: 'modules/symbol_magnetic_disk',
+		smbMagneticTape				: 'modules/symbol_magnetic_tape',
+		smbManualInput				: 'modules/symbol_manual_input',
+		smbManualOperation		: 'modules/symbol_manual_operation',
+		smbMergeStorage				: 'modules/symbol_merge_storage',
+		smbMultiDocument			: 'modules/symbol_multi_document',
+		smbOffPageConnector		: 'modules/symbol_off_page_connector',
+		smbOr									: 'modules/symbol_or',
+		smbPredefinedProcess  : 'modules/symbol_predefined_process',
+		smbPreparation				: 'modules/symbol_preparation',
+		smbProcess  					: 'modules/symbol_process',
+		smbPunchedTape				: 'modules/symbol_punched_tape',
+		smbSort								: 'modules/symbol_sort',
+		smbStoredData					: 'modules/symbol_stored_data',
+		smbSummingJunction		: 'modules/symbol_summing_junction',
+		smbTerminator					: 'modules/symbol_terminator',
+		smbTransfer						: 'modules/symbol_transfer'
+  },
+  shim : {
+    Flowchart : ['resize'],
+    modal     : ['jquery', 'helpers'],
+    memory    : ['jquery', 'jstorage'],
+    toolConfig: ['jquery', 'handlers', 'Flowchart', 'Shape', 'Connector',
+    							// Symbols
+    						 'smbAlternateProcess', 'smbCallout', 'smbCard', 'smbCollate', 'smbConnector', 'smbDataInputOutput', 
+    						 'smbDecision', 'smbDelay', 'smbDirectAccessStorage', 'smbDisplay', 'smbDocument', 'smbExtract',
+    						 'smbInternalStorage', 'smbMagneticDisk', 'smbMagneticTape', 'smbManualInput', 'smbManualOperation',
+    						 'smbMergeStorage', 'smbMultiDocument', 'smbOffPageConnector', 'smbOr', 'smbPredefinedProcess', 'smbPreparation',
+    						 'smbProcess', 'smbPunchedTape', 'smbSort', 'smbStoredData', 'smbSummingJunction', 'smbTerminator', 'smbTransfer'
+    						]
+  }
+});
+require(['init'], function(init) {});

@@ -28,43 +28,45 @@ function(require, $, helpers, handlers, modal) {
     this.id = genID();
     
 		$.extend(true, this, settings);
+		
+		this.selector = this.parent.shpSelector;
 	};
 	
 	Shape.prototype = {
 	  render : function() {
 	    var elG = svgCreateElement('g'),
-          elPath = svgCreateElement('path'),
+          ele = svgCreateElement('path'),
           elText = svgCreateElement('text'),
           label = svgCreateElement(this.label, true),
           canvas = this.parent.canvas;
 	    
-	    elPath.attr(this.attr);
+	    ele.attr(this.attr);
       elText.attr(this.textAttr);
       appendElement(elText, label);
-      appendElement(elG, [elPath, elText]);
+      appendElement(elG, [ele, elText]);
       
 	    elG.id = this.id;
-	    this.index = canvas.childNodes.length;
+	    this.zIndex = canvas.childNodes.length;
 	    
-	    $(elG).on('mousedown', this, this.select);
+	    $(elG).on('mousedown touchstart', this, this.select);
 	    
 	    this.elG = elG;
-	    this.elPath = elPath;
+	    this.ele = ele;
 	    this.elText = elText;
 	    
 	    appendElement(canvas, elG);
 	    
-	    if(!this.parent.shapes[this.index] || this.id != this.parent.shapes[this.index].id) {
+	    if(!this.parent.shapes.contains(this.id, 'id')) {
 	    	this.parent.shapes.push(this);
 	    }
 	    
 	    if(this.isSelected) {
-	      var _actShape = this.parent.actShape;
-	      if(_actShape && _actShape.id != this.id) {
-	        _actShape.isSelected = false;
+	      var _selectedShape = this.parent.selectedShape;
+	      if(_selectedShape && _selectedShape.id != this.id) {
+	        _selectedShape.isSelected = false;
 	      }
-	      this.parent.actShape = this;
-	      if(!this.parent.selector.isVisible()) this.parent.selector.show();
+	      this.parent.selectedShape = this;
+	      if(!this.selector.isVisible()) this.selector.show();
 	    }
 	  },
 	  bringToFront : function() {
@@ -77,7 +79,7 @@ function(require, $, helpers, handlers, modal) {
 	  },
 	  sendToBack : function() {
       var self = this.elG;
-      if(this.index > 0) {
+      if(this.zIndex > 0) {
         self.parentNode.insertBefore(self, self.parentNode.firstChild);
         Action.publish('shape-to-back', this);
       }
@@ -86,22 +88,22 @@ function(require, $, helpers, handlers, modal) {
     bringForward : function() {
       var self = this.elG;
       if(self.parentNode.lastChild != self) {
-        self.parentNode.insertBefore(self.parentNode.childNodes[this.index + 1], self);
+        self.parentNode.insertBefore(self.parentNode.childNodes[this.zIndex + 1], self);
         Action.publish('shape-to-forward', this);
       }
       return this;
     },
     sendBackward : function() {
       var self = this.elG;
-      if(this.index > 0) {
-        self.parentNode.insertBefore(self, self.parentNode.childNodes[this.index - 1]);
+      if(this.zIndex > 0) {
+        self.parentNode.insertBefore(self, self.parentNode.childNodes[this.zIndex - 1]);
         Action.publish('shape-to-backward', this);
       }
       return this;
     },
 	  setAttrD : function(values) {
 	    this.d = compileAttrD(this.template, values);
-      this.elPath.attr({'d' : this.d});
+      this.ele.attr({'d' : this.d});
       this.positionLabel();
       if(this.isSelected) this.positionSelector();
 	  },
@@ -143,37 +145,38 @@ function(require, $, helpers, handlers, modal) {
       };
 		      
       for(key in _gripNodeData) {
-        getElement('.slctGrip-' + key, this.parent.selector)[0].attr(_gripNodeData[key]);
+        getElement('.slctGrip-' + key, this.selector)[0].attr(_gripNodeData[key]);
       }
-			getElement('.boxSelector', this.parent.selector)[0].attr({
+			getElement('.boxSelector', this.selector)[0].attr({
 			  x : _x,
 			  y : _y,
 			  width : _width,
 			  height : _height 
 		  });
 		},
-		deSelectSelectedShape : function(silent) {
-		  if(this.parent.actShape) {
+		deSelect : function(silent) {
+		  if(this.parent.selectedShape) {
 		    var _parent = this.parent;
-		    _parent.actShape.isSelected = false;
-		    _parent.actShape = null;
-		    _parent.selector.hide();
+		    _parent.selectedShape.isSelected = false;
+		    _parent.selectedShape = null;
+		    _parent.shpSelector.hide();
+		    _parent.conSelector.hide();
 		    if(!silent) Action.publish('shape-deselected', _parent.shapes[_parent.shapes.length - 1]);
 		  }
 		},
 		select : function(event) {
-			if(ACTION != 'select') return;
-			
 			var _shape = event.data,
 					_parent = _shape.parent;
 					
-		  _shape.deSelectSelectedShape(true);
+			if(TOOL != 'select') return;
+					
+		  _shape.deSelect(true);
 		  _shape.isSelected = true;
 		  _shape.positionSelector();
-		  _parent.actShape = _shape;
+		  _parent.selectedShape = _shape;
 		  event.stopPropagation();
-		  _parent.initShapeAction(event, 'drag');
-		  _parent.selector.show();
+		  _parent.initiateTask(event, 'drag');
+		  _shape.selector.show();
 		  Action.publish('shape-selected', _shape);
 		},
 		copy : function() {
@@ -184,21 +187,21 @@ function(require, $, helpers, handlers, modal) {
 		remove : function() {
 	    var _parent = this.parent;
 	    this.elG.remove();
-	    _parent.actShape = null;
-	    _parent.selector.hide();
+	    _parent.selectedShape = null;
+	    this.selector.hide();
 	    Action.publish('shape-removed', this);
 	  },
 	  setFill : function() {
-	    this.elPath.attr({fill : this.attr.fill = COLOR_FILL});
+	    this.ele.attr({fill : this.attr.fill = COLOR_FILL});
 	  },
 	  setFillOpacity : function() {
       console.log('setFillOpacity fired..');
     },
     setStroke : function() {
-      this.elPath.attr({stroke : this.attr.stroke = COLOR_BORDER});
+      this.ele.attr({stroke : this.attr.stroke = COLOR_BORDER});
     },
     setStrokeWidth : function() {
-      this.elPath.attr({'stroke-width' : this.attr['stroke-width'] = BORDER_WIDTH});
+      this.ele.attr({'stroke-width' : this.attr['stroke-width'] = BORDER_WIDTH});
       this.setD();
     },
     setStrokeOpacity : function() {
@@ -237,7 +240,8 @@ function(require, $, helpers, handlers, modal) {
 	  constructor : Shape,
 	  toString : function() {
 	    return '[Shape - ' + this.name + ']';
-	  }
+	  },
+	  type : 'Shape'
 	};
 	
 	return Shape;
