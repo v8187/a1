@@ -28,6 +28,8 @@ function(require, $, helpers, handlers, modal) {
     this.id = genID();
     
 		$.extend(true, this, settings);
+		
+		this.selector = this.parent.shpSelector;
 	};
 	
 	Shape.prototype = {
@@ -59,13 +61,12 @@ function(require, $, helpers, handlers, modal) {
 	    }
 	    
 	    if(this.isSelected) {
-	      var _actShape = this.parent.actShape;
-	      if(_actShape && _actShape.id != this.id) {
-	        _actShape.isSelected = false;
+	      var _selectedShape = this.parent.selectedShape;
+	      if(_selectedShape && _selectedShape.id != this.id) {
+	        _selectedShape.isSelected = false;
 	      }
-	      this.parent.actShape = this;
-	      if(!this.parent.shpSelector.isVisible()) this.parent.shpSelector.show();
-	      this.parent.conSelector.hide()
+	      this.parent.selectedShape = this;
+	      if(!this.selector.isVisible()) this.selector.show();
 	    }
 	  },
 	  bringToFront : function() {
@@ -144,37 +145,38 @@ function(require, $, helpers, handlers, modal) {
       };
 		      
       for(key in _gripNodeData) {
-        getElement('.slctGrip-' + key, this.parent.shpSelector)[0].attr(_gripNodeData[key]);
+        getElement('.slctGrip-' + key, this.selector)[0].attr(_gripNodeData[key]);
       }
-			getElement('.boxSelector', this.parent.shpSelector)[0].attr({
+			getElement('.boxSelector', this.selector)[0].attr({
 			  x : _x,
 			  y : _y,
 			  width : _width,
 			  height : _height 
 		  });
 		},
-		deSelectSelectedShape : function(silent) {
-		  if(this.parent.actShape) {
+		deSelect : function(silent) {
+		  if(this.parent.selectedShape) {
 		    var _parent = this.parent;
-		    _parent.actShape.isSelected = false;
-		    _parent.actShape = null;
+		    _parent.selectedShape.isSelected = false;
+		    _parent.selectedShape = null;
 		    _parent.shpSelector.hide();
+		    _parent.conSelector.hide();
 		    if(!silent) Action.publish('shape-deselected', _parent.shapes[_parent.shapes.length - 1]);
 		  }
 		},
 		select : function(event) {
-			if(TOOL != 'select') return;
-			
 			var _shape = event.data,
 					_parent = _shape.parent;
 					
-		  _shape.deSelectSelectedShape(true);
+			if(TOOL != 'select') return;
+					
+		  _shape.deSelect(true);
 		  _shape.isSelected = true;
 		  _shape.positionSelector();
-		  _parent.actShape = _shape;
+		  _parent.selectedShape = _shape;
 		  event.stopPropagation();
 		  _parent.initiateTask(event, 'drag');
-		  _parent.shpSelector.show();
+		  _shape.selector.show();
 		  Action.publish('shape-selected', _shape);
 		},
 		copy : function() {
@@ -185,8 +187,8 @@ function(require, $, helpers, handlers, modal) {
 		remove : function() {
 	    var _parent = this.parent;
 	    this.elG.remove();
-	    _parent.actShape = null;
-	    _parent.shpSelector.hide();
+	    _parent.selectedShape = null;
+	    this.selector.hide();
 	    Action.publish('shape-removed', this);
 	  },
 	  setFill : function() {

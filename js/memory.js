@@ -9,7 +9,7 @@ require(['jquery', 'jstorage', 'Flowchart'],
     //Private varibales to store local Data
     var _actFlowchart = null, _inactFlowcharts = [],
         _selectedShape = null, _shapes = [],
-        _actConnector = null, _connecters = [],
+        _selectedShape = null, _connecters = [],
         _toolsExpanded = true, _toolsAccordion = [],
         _colorEleId = null, _copiedShape = null,
         _af = null, _mf = [], _as = null, _ms = [];
@@ -36,7 +36,7 @@ require(['jquery', 'jstorage', 'Flowchart'],
     }
   	function _shapeUpdated() {
     	if(_af) {
-      	_af.actShape = _as;
+      	_af.selectedShape = _as;
       	_setFiles();
     	}
     }
@@ -44,7 +44,7 @@ require(['jquery', 'jstorage', 'Flowchart'],
       var _cloned = clone(argFile, 'parent');
       _actFlowchart = argFile;
       _af = _cloned;
-      _selectedShape = argFile.actShape;
+      _selectedShape = argFile.selectedShape;
       _shapes = argFile.shapes;
       _ms = _cloned.shapes;
       _as = _selectedShape ? _ms[_selectedShape.zIndex] : null;
@@ -57,7 +57,7 @@ require(['jquery', 'jstorage', 'Flowchart'],
       _setFiles();
     }
     function _resetShapeVars() {
-      _actFlowchart.actShape = _af.actShape = _selectedShape = _as = null;
+      _actFlowchart.selectedShape = _af.selectedShape = _selectedShape = _as = null;
       _setFiles();
     }
     

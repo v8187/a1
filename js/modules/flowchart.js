@@ -21,7 +21,7 @@ define('Flowchart',['require', 'jquery', 'helpers', 'handlers', 'modal', 'text!t
       _initialAxis = [];
       
       if(this.attr('fc:for') == 'shape') {
-      	var _shapeAxis = getActFile().actShape.axis;
+      	var _shapeAxis = getActFile().selectedShape.axis;
       	if(_selectorHandle.indexOf('w') >= 0) {
 	        _initialAxis[0] = _shapeAxis[1][0];
 	      } else if(_selectorHandle.indexOf('e') >= 0) {
@@ -33,7 +33,7 @@ define('Flowchart',['require', 'jquery', 'helpers', 'handlers', 'modal', 'text!t
 	        _initialAxis[1] = _shapeAxis[0][1];
 	      }
       } else {
-      	var _shapeAxis = getActFile().actConnector.axis;
+      	var _shapeAxis = getActFile().selectedShape.axis;
       }
     }    
     
@@ -57,7 +57,7 @@ define('Flowchart',['require', 'jquery', 'helpers', 'handlers', 'modal', 'text!t
             return;
             break;
           case 'select' :
-           if(_flowchart.actShape) _flowchart.actShape.deSelectSelectedShape();
+           if(_flowchart.selectedShape) _flowchart.selectedShape.deSelect();
            return;
            break;
         }
@@ -79,7 +79,7 @@ define('Flowchart',['require', 'jquery', 'helpers', 'handlers', 'modal', 'text!t
         };
         _currentShape = new (require(TOOL == 'draw' ? SYMBOL : 'Connector'))(_param);
       } else {
-      	_currentShape = _flowchart[TOOL == 'draw' ? 'actShape' : 'actConnector'];
+      	_currentShape = _flowchart.selectedShape ? _flowchart.selectedShape : _flowchart.selectedShape;
       }
       if(_taskName) {
         _shapeAxis = _currentShape.axis;
@@ -142,8 +142,9 @@ define('Flowchart',['require', 'jquery', 'helpers', 'handlers', 'modal', 'text!t
           }
           _currentShape.width = Math.abs(_shapeAxis[1][0] - _shapeAxis[0][0]);
           _currentShape.height = Math.abs(_shapeAxis[1][1] - _shapeAxis[0][1]);
-          _currentShape.setPoints ? _currentShape.setPoints() : _currentShape.setD();
-        } 
+          
+        }
+        _currentShape.setPoints ? _currentShape.setPoints() : _currentShape.setD(); 
         _lastAxis = _currentAxis; 
       	return false;
       }
@@ -208,16 +209,13 @@ define('Flowchart',['require', 'jquery', 'helpers', 'handlers', 'modal', 'text!t
 				var shapes = this.shapes;
 				for(var i=0; i < shapes.length; i++) {
 					shapes[i].parent = this;
-					shapes[i] = new (require(shapes[i].symbolId))(shapes[i]);
-					shapes[i].setD();
-				}
-			}
-			if(this.connectors && this.connectors.length) {
-				var connectors = this.connectors;
-				for(var i=0; i < connectors.length; i++) {
-					connectors[i].parent = this;
-					connectors[i] = new (require('Connector'))(connectors[i]);
-					connectors[i].setPoints();
+					if(shapes[i].type == 'Connector') {
+						shapes[i] = new (require('Connector'))(shapes[i]);
+						shapes[i].setPoints();
+					} else {
+						shapes[i] = new (require(shapes[i].symbolId))(shapes[i]);
+						shapes[i].setD();
+					}
 				}
 			}
 			Action.publish('fc-created', this);
@@ -243,7 +241,7 @@ define('Flowchart',['require', 'jquery', 'helpers', 'handlers', 'modal', 'text!t
 					swapClass($('.icon.restore', _flowchart.$el), 'restore', 'minimize');
 					$('#canvasWrapper').html(_flowchart.$el);
 					Action.publish('fc-restored', _flowchart);
-					Action.publish(_flowchart.actShape ? 'shape-selected' : 'shape-deselected', _flowchart.actShape);
+					Action.publish(_flowchart.selectedShape ? 'shape-selected' : 'shape-deselected', _flowchart.selectedShape);
 				}
 				resizeContainer();
 			},
