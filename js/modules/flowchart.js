@@ -20,7 +20,7 @@ define('Flowchart',['require', 'jquery', 'helpers', 'handlers', 'modal', 'text!t
       event.data.initiateTask(event, 'resize');
       _initialAxis = [];
       
-      if(this.attr('fc:for') == 'shape') {
+      if(getActFile().selectedShape.type == 'Shape') {
       	var _shapeAxis = getActFile().selectedShape.axis;
       	if(_selectorHandle.indexOf('w') >= 0) {
 	        _initialAxis[0] = _shapeAxis[1][0];
@@ -140,11 +140,12 @@ define('Flowchart',['require', 'jquery', 'helpers', 'handlers', 'modal', 'text!t
           			break;
           	}
           }
+          
           _currentShape.width = Math.abs(_shapeAxis[1][0] - _shapeAxis[0][0]);
           _currentShape.height = Math.abs(_shapeAxis[1][1] - _shapeAxis[0][1]);
           
         }
-        _currentShape.setPoints ? _currentShape.setPoints() : _currentShape.setD(); 
+        _currentShape.type == 'Connector' ? _currentShape.setPoints() : _currentShape.setD(); 
         _lastAxis = _currentAxis; 
       	return false;
       }
@@ -178,9 +179,7 @@ define('Flowchart',['require', 'jquery', 'helpers', 'handlers', 'modal', 'text!t
 	    this.isActive 				= settings.isActive === false ? false : true;
 			this.stateIcon				= this.isActive ? 'minimize' : 'restore';
 			this.shapes						= settings.shapes || [];
-			this.connectors				= settings.connectors || [];
 			this.shapesCount 			= settings.shapesCount || 0;
-			this.connectorsCount	= settings.connectorsCount || 0;
 			
 			this.$el = $(renderTemplate($(template).html(), this));
 			this.svg = $('svg', this.$el)[0];

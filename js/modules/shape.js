@@ -35,7 +35,7 @@ function(require, $, helpers, handlers, modal) {
 	Shape.prototype = {
 	  render : function() {
 	    var elG = svgCreateElement('g'),
-          ele = svgCreateElement('path'),
+          ele = svgCreateElement(this.eleType),
           elText = svgCreateElement('text'),
           label = svgCreateElement(this.label, true),
           canvas = this.parent.canvas;
@@ -63,7 +63,7 @@ function(require, $, helpers, handlers, modal) {
 	    if(this.isSelected) {
 	      var _selectedShape = this.parent.selectedShape;
 	      if(_selectedShape && _selectedShape.id != this.id) {
-	        _selectedShape.isSelected = false;
+	        _selectedShape.deSelect(true);
 	      }
 	      this.parent.selectedShape = this;
 	      if(!this.selector.isVisible()) this.selector.show();
@@ -241,7 +241,8 @@ function(require, $, helpers, handlers, modal) {
 	  toString : function() {
 	    return '[Shape - ' + this.name + ']';
 	  },
-	  type : 'Shape'
+	  type : 'Shape',
+	  eleType : 'path'
 	};
 	
 	return Shape;
