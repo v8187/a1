@@ -10,43 +10,7 @@ function(require, $, helpers, handlers, modal, Shape) {
 		this.render();
 	};
 	
-	Connector.inherits(Shape);
-	Connector.prototype.render = function() {
-    var elG = svgCreateElement('g'),
-        ele = svgCreateElement('polyline'),
-        elText = svgCreateElement('text'),
-        label = svgCreateElement(this.label, true),
-        canvas = this.parent.canvas;
-    
-    ele.attr(this.attr);
-    elText.attr(this.textAttr);
-    appendElement(elText, label);
-    appendElement(elG, [ele, elText]);
-    
-    elG.id = this.id;
-    this.zIndex = canvas.childNodes.length;
-    
-    $(elG).on('mousedown touchstart', this, this.select);
-    
-    this.elG = elG;
-    this.ele = ele;
-    this.elText = elText;
-    
-    appendElement(canvas, elG);
-    
-    if(!this.parent.shapes.contains(this.id, 'id')) {	
-    	this.parent.shapes.push(this);
-    }
-    
-    if(this.isSelected) {
-      var _selectedShape = this.parent.selectedShape;
-      if(_selectedShape && _selectedShape.id != this.id) {
-        _selectedShape.isSelected = false;
-      }
-      this.parent.selectedShape = this;
-      if(!this.selector.isVisible()) this.selector.show();
-    }
-	};
+	Connector.inherits(Shape);	
 	Connector.prototype.setPoints = function() {
     this.points = this.axis.join().replace(/,/g,' ');
     this.ele.attr({'points' : this.points});
@@ -75,6 +39,13 @@ function(require, $, helpers, handlers, modal, Shape) {
 	      _border = formatNumber(this.attr['stroke-width']),
 	      _width = this.width + _border, _height = this.height + _border;
 	      
+    var cy = Math.min(_axis[0][1], _axis[1][1]) + _height,
+    		cx = Math.min(_axis[0][0], _axis[1][0]) + _width,
+    		ey = Math.max(_axis[0][1], _axis[1][1]),
+		    ex = Math.max(_axis[0][0], _axis[1][0]),
+		    theta = Math.atan2(ey - cy, ex - cx),
+		    theta = theta * 180 / Math.PI;
+	      
     getElement('.slctGrip-first', this.selector)[0].attr({ 
     	x : _axis[0][0] - _border / 2 - 3,
     	y : _axis[0][1] - _border / 2 - 3 
@@ -83,12 +54,18 @@ function(require, $, helpers, handlers, modal, Shape) {
     	x : _axis[1][0] - _border / 2, 
     	y : _axis[1][1] - _border / 2
   	});
+  	getElement('.transparent', this.selector)[0].attr({ 
+    	x : _axis[0][0] - _border / 2, 
+    	y : _axis[0][1] - _border / 2,
+    	height : Math.max(_width, _height)
+  	});
 	};
 	Connector.prototype.setFill = function() {
     this.ele.attr({fill : this.attr.fill = 'transparent'});
  	};
 	Connector.prototype.constructor = Connector;
 	Connector.prototype.type = 'Connector';
+	Connector.prototype.eleType = 'polyline';
 	Connector.prototype.toString = function() {
 		return '[Connector - ' + this.name + ']';
  	};	
