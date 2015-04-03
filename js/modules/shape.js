@@ -11,7 +11,7 @@ function(require, $, helpers, handlers, modal) {
       'stroke-opacity'  : COLOR_BORDER_OPACITY 
 		};
 		this.textAttr = {
-		  'fill'       : COLOR_TEXT,
+		  'fill'       			: COLOR_TEXT,
 		  'fill-opacity'    : COLOR_TEXT_OPACITY,
       'font-family'     : FONT_NAME,
       'font-size'       : FONT_SIZE,
@@ -49,6 +49,7 @@ function(require, $, helpers, handlers, modal) {
 	    this.zIndex = canvas.childNodes.length;
 	    
 	    $(elG).on('mousedown touchstart', this, this.select);
+	    $(elText).on('mousedown touchstart', this, this.editLabel);
 	    
 	    this.elG = elG;
 	    this.ele = ele;
@@ -168,7 +169,7 @@ function(require, $, helpers, handlers, modal) {
 			var _shape = event.data,
 					_parent = _shape.parent;
 					
-			if(TOOL != 'select') return;
+			if(TOOL != 'select' && TOOL != 'text') return;
 					
 		  _shape.deSelect(true);
 		  _shape.isSelected = true;
@@ -234,8 +235,19 @@ function(require, $, helpers, handlers, modal) {
     setFontDecoration : function() {
       this.elText.attr({'text-decoration' : TEXT_DECORATION});
     },
-    setLabel : function() {
-      console.log('setLabel fired..');
+    editLabel : function() {
+      var elInput = getElement('#labelEditor'),
+      		attr = this.textAttr,
+      		styles = 'display:block; color:' + attr.fill + ';font:' + attr['font-weight'] + ' ' 
+      				+ attr['font-size'] + 'px ' + attr['font-family'] + ';'
+      				+ 'top: ' + (attr.y - attr['font-size']) + 'px; left: ' + attr.x + 'px;';
+      
+      elInput.attr({
+      	'style' : styles,
+      	'value' : this.label      	
+    	});
+    	
+    	this.elText.hide();
     },
 	  constructor : Shape,
 	  toString : function() {

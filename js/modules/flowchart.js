@@ -38,9 +38,13 @@ define('Flowchart',['require', 'jquery', 'helpers', 'handlers', 'modal', 'text!t
     }    
     
     function _handleSelectorBoxStart(event) {
-      if(TOOL != 'select') return;
+      if(TOOL != 'select' && TOOL != 'text') return;
       event.stopPropagation();
-      event.data.initiateTask(event, 'drag');
+      if(TOOL == 'text') {
+      	event.data.selectedShape.editLabel();
+      } else {
+      	event.data.initiateTask(event, 'drag');      	
+      }      
       return false;
     }
     
@@ -158,6 +162,17 @@ define('Flowchart',['require', 'jquery', 'helpers', 'handlers', 'modal', 'text!t
       Action.publish('fc-updated', _flowchart);
     }
     
+  	function _saveLabel(event) {
+  		if(event.keyCode == keyCode.ESCAPE || event.keyCode == keyCode.ENTER || event.type == 'blur'){
+  			var _actShape = getSelectedShape();
+  			
+  			_actShape.elText.textContent = _actShape.label = this.value;
+  			this.style.display = 'none';
+  			_actShape.elText.show();
+  			Action.publish('shape-selected', _actShape);
+  		}
+  	}
+  	
   	var fileConfirmModal = new VModal({
       type: 'confirm',
       title : 'Confirm Close',
@@ -203,6 +218,8 @@ define('Flowchart',['require', 'jquery', 'helpers', 'handlers', 'modal', 'text!t
 			} else {
 				this.$el.prependTo('#minFileWrapper');
 			}
+			
+			$('#labelEditor').on('keyup blur', _saveLabel);
 			
 			if(this.shapes && this.shapes.length) {
 				var shapes = this.shapes;

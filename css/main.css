@@ -379,6 +379,8 @@ form {
     background-position: -36px -5px; }
   .icon.connector {
     background-position: -6px -6px; }
+  .icon.label {
+    background-position: -6px -215px; }
 
 /*----------------------------------------------
  * Modal PopUps Styles
@@ -615,6 +617,13 @@ section.toolBox a {
 #minFileWrapper {
   padding: 5px 0 0 5px;
   overflow: hidden; }
+
+#labelEditor {
+  border: 0 none;
+  outline: 0 none;
+  background: transparent;
+  position: absolute;
+  display: none; }
 
 .flwc_wrapper {
   border: 1px solid #aaa; }

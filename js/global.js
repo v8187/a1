@@ -63,7 +63,7 @@ Function.prototype.inherits = function(Obj) {
 
 SVGElement.prototype.getElementsByClassName = SVGElement.prototype.getElementsByClassName || document.body.getElementsByClassName;
 
-SVGElement.prototype.attr = function(keyOrObj, val) {
+Element.prototype.attr = function(keyOrObj, val) {
   
   if(isValidString(keyOrObj)) {
     if(val) {

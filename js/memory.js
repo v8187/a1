@@ -251,7 +251,7 @@ require(['jquery', 'jstorage', 'Flowchart'],
       _setTools();
     });
     Action.subscribe('shape-selected', function(shape) {
-	  	COLOR = COLOR_FILL = shape.attr.fill;
+	  	if(shape.attr.fill != 'transparent') COLOR = COLOR_FILL = shape.attr.fill;
 	  	COLOR_BORDER = shape.attr.stroke;
 	  	COLOR_TEXT = shape.textAttr.fill;
 	  	$('#ctrlClr_Shape').prop('checked', true);
